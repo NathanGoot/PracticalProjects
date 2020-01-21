@@ -19,8 +19,9 @@ public class NextPrimeNumber {
 		while (true) {
 			number = findNextPrimeNumber(number);
 			System.out.println(number);
-			System.out.println("Continue? ");
-			if (!inputScanner.nextBoolean())
+			System.out.println("Continue? (y)/n ");
+			String input = inputScanner.next();
+			if (input != null && input.equals("n"))
 				break;
 		}
 		inputScanner.close();
