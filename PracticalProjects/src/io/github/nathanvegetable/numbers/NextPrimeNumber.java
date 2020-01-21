@@ -1,5 +1,7 @@
 package io.github.nathanvegetable.numbers;
 
+import java.math.BigInteger;
+
 /**
  * Project: Have the program find prime numbers until the user chooses to stop
  * asking for the next one.
@@ -19,6 +21,11 @@ public class NextPrimeNumber {
 		while (!isPrimeNumber(nextNum))
 			nextNum++;
 		return nextNum;
+	}
+
+	public static int findNextPrimeNumberWithBigInteger(int input) {
+		BigInteger bigInt = new BigInteger(String.valueOf(input));
+		return Integer.parseInt(bigInt.nextProbablePrime().toString());
 	}
 
 	public static boolean isPrimeNumber(int input) {
