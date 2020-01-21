@@ -4,7 +4,8 @@ public class FindPiToTheNthDigit {
 	public static int DEFAULT_LIMIT = 10;
 
 	public static void main(String[] args) {
-		FindPiToTheNthDigit.findWithMathPI(DEFAULT_LIMIT);
+		double result = FindPiToTheNthDigit.findWithMathPI(DEFAULT_LIMIT);
+		System.out.println(result);
 	}
 
 	public static double findWithMathPI(int limit) {
