@@ -4,7 +4,7 @@ package io.github.nathanvegetable.numbers;
  * Project: Fibonacci Sequence - Enter a number and have the program generate
  * the Fibonacci sequence to that number or to the Nth number.
  * 
- * @author Nathan Gutauckas
+ * @author NathanVegetable
  */
 public class FibonacciSequence {
 

@@ -5,7 +5,7 @@ package io.github.nathanvegetable.numbers;
  * instead of PI. Enter a number and have the program generate e up to that many
  * decimal places. Keep a limit to how far the program will go.
  * 
- * @author Nathan Gutauckas
+ * @author NathanVegetable
  */
 public class FindEToTheNthDigit {
 
