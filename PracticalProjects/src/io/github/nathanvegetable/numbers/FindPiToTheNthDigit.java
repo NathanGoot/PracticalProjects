@@ -12,8 +12,12 @@ public class FindPiToTheNthDigit {
 		System.out.println(result);
 	}
 
+	/**
+	 * Finds Pi to the Nth digit.<br/>
+	 * Has a max precision of 15 digits due to {@link Math#PI} only storing 15
+	 * digits.
+	 */
 	public static double findWithMathPI(int limit) {
-		// Math.PI has only precision up to 15 digits.
 		if (limit < 0 || limit > MATH_PI_MAX_PRECISION)
 			throw new IllegalArgumentException("limit must be > 0 && <= " + MATH_PI_MAX_PRECISION);
 		double pi = Math.PI;
