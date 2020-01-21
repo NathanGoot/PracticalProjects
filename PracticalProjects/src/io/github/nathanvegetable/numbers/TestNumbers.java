@@ -23,5 +23,11 @@ class TestNumbers {
 		double hardcodedPI14Digit = 3.14159265358979d;
 		assertEquals(hardcodedPI14Digit, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION - 1));
 	}
+	
+	@Test
+	void findToNthDigitShouldMatchHardcode() {
+		double hardcodedPI3Digit = 3.14d;
+		assertEquals(hardcodedPI3Digit,FindEToTheNthDigit.findWithStringFormat(Math.PI, 2));
+	}
 
 }
