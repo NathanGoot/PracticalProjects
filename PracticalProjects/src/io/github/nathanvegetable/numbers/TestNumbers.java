@@ -5,6 +5,8 @@ package io.github.nathanvegetable.numbers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -39,6 +41,18 @@ class TestNumbers {
 	@Test
 	void fibonacciSequence20thDigitShouldBe4181() {
 		assertEquals(4181, FibonacciSequence.getSequence(20)[19]);
+	}
+
+	@Test
+	void primeFactorOf15Is3And5() {
+		ArrayList<Integer> result = PrimeFactorization.findPrimeFactors(15);
+		boolean[] found = new boolean[2];
+		int[] lookingFor = new int[] { 3, 5 };
+		for (int i = 0; i < result.size(); i++)
+			for (int j = 0; j < lookingFor.length; j++)
+				if (result.get(i) == lookingFor[j])
+					found[j] = true;
+		assertTrue(found[0] && found[1]);
 	}
 
 }
