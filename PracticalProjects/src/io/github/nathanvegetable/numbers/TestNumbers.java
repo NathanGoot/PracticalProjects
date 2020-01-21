@@ -29,5 +29,15 @@ class TestNumbers {
 		double hardcodedPI3Digit = 3.14d;
 		assertEquals(hardcodedPI3Digit,FindEToTheNthDigit.findWithStringFormat(Math.PI, 2));
 	}
+	
+	@Test
+	void fibonacciSequence7thDigitShouldBe8() {
+		assertEquals(8, FibonacciSequence.getSequence(7)[6]);
+	}
+	
+	@Test
+	void fibonacciSequence20thDigitShouldBe4181() {
+		assertEquals(4181, FibonacciSequence.getSequence(20)[19]);
+	}
 
 }
