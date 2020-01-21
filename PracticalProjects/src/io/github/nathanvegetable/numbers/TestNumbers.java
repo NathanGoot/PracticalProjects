@@ -8,8 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
- * @author Nathan
- *
+ * @author Nathan Gutauckas
  */
 class TestNumbers {
 

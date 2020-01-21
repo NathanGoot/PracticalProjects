@@ -1,5 +1,8 @@
 package io.github.nathanvegetable.numbers;
 
+/**
+ * @author Nathan Gutauckas
+ */
 public class FindPiToTheNthDigit {
 	public static int DEFAULT_LIMIT = 10;
 	public static int MATH_PI_MAX_PRECISION = 15;
