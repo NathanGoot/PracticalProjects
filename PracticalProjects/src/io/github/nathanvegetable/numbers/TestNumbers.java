@@ -55,4 +55,10 @@ class TestNumbers {
 		assertTrue(found[0] && found[1]);
 	}
 
+	@Test
+	void nextPrimeNumberAfter1005Is1009() {
+		assertEquals(1009, NextPrimeNumber.findNextPrimeNumber(1005));
+		assertEquals(1009, NextPrimeNumber.findNextPrimeNumberWithBigInteger(1005));
+	}
+
 }
