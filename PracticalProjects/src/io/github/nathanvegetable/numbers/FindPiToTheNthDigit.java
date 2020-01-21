@@ -9,7 +9,7 @@ public class FindPiToTheNthDigit {
 
 	public static void main(String[] args) {
 		double result = FindPiToTheNthDigit.findWithMathPI(DEFAULT_LIMIT);
-		System.out.println(doubleStringNoNotation(result, DEFAULT_LIMIT));
+		System.out.println(result);
 	}
 
 	public static double findWithMathPI(int limit) {
@@ -17,12 +17,8 @@ public class FindPiToTheNthDigit {
 		if (limit < 0 || limit > MATH_PI_MAX_PRECISION)
 			throw new IllegalArgumentException("limit must be > 0 && <= " + MATH_PI_MAX_PRECISION);
 		double pi = Math.PI;
-		String piString = doubleStringNoNotation(pi, MATH_PI_MAX_PRECISION).replace(".", "");
+		String piString = String.valueOf(pi).replace(".", "");
 		piString = piString.substring(1, limit + 1);
 		return Double.parseDouble("3." + piString);
-	}
-
-	private static String doubleStringNoNotation(double number, int digits) {
-		return String.format("%." + digits + "f", number);
 	}
 }
