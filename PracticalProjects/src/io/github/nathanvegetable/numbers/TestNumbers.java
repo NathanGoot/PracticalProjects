@@ -1,6 +1,3 @@
-/**
- * 
- */
 package io.github.nathanvegetable.numbers;
 
 import static org.junit.jupiter.api.Assertions.*;
