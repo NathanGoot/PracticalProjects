@@ -27,7 +27,7 @@ public class NextPrimeNumber {
 	}
 
 	public static int findNextPrimeNumber(int input) {
-		int nextNum = input++;
+		int nextNum = ++input;
 		while (!isPrimeNumber(nextNum))
 			nextNum++;
 		return nextNum;
