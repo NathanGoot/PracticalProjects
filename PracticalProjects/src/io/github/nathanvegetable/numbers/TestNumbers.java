@@ -58,4 +58,11 @@ class TestNumbers {
 		assertEquals(1009, NextPrimeNumber.findNextPrimeNumberWithBigInteger(1005));
 	}
 
+	@Test
+	void costOfTilesMatch() {
+		int tileSize = 2, floorSize = 4, cost = 2, expectedCost = 8;
+		assertEquals(expectedCost,
+				FindCostOfTileToCoverWxHFloor.findCostOfFloorPlan(cost, tileSize, tileSize, floorSize, floorSize));
+	}
+
 }
