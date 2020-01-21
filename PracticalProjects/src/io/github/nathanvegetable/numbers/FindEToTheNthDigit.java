@@ -11,6 +11,6 @@ public class FindEToTheNthDigit {
 	}
 
 	public static double find(double input, int digits) {
-		// TODO: FindEToTheNthDigit
+		return Double.parseDouble(String.format("%." + digits + "f", input));
 	}
 }
