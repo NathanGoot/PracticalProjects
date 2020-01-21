@@ -15,7 +15,7 @@ public class FindPiToTheNthDigit {
 			throw new IllegalArgumentException("limit must be > 0 && <= " + MATH_PI_MAX_PRECISION);
 		double pi = Math.PI;
 		String piString = doubleStringNoNotation(pi, MATH_PI_MAX_PRECISION).replace(".", "");
-		piString = piString.substring(1, limit);
+		piString = piString.substring(1, limit + 1);
 		return Double.parseDouble("3." + piString);
 	}
 
