@@ -16,7 +16,16 @@ public class MortgageCalculator {
 	public static final int DEFAULT_TERM_IN_YEARS = 30;
 
 	public static void main(String[] args) {
-		System.out.println(MortgageCalculator.getTotalLoanCost(5000, 5, 12, 10));
+		System.out.println(MortgageCalculator.getTotalLoanCost(5000, 5, 10, CompoundInterval.MONTHLY));
+	}
+
+	public enum CompoundInterval {
+		DAILY(365.25), MONTHLY(12), YEARLY(1);
+		public double amountInYear;
+
+		CompoundInterval(double amountInYear) {
+			this.amountInYear = amountInYear;
+		}
 	}
 
 	/**
@@ -29,9 +38,9 @@ public class MortgageCalculator {
 	 * <a href=
 	 * "https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php">Source</a>
 	 */
-	public static double getTotalLoanCost(double initialBalance, double interestRate,
-			double interestAppliedPerTimePeriod, double timePeriods) {
-		return initialBalance * Math.pow((1 + ((interestRate / 100) / interestAppliedPerTimePeriod)),
-				interestAppliedPerTimePeriod * timePeriods);
+	public static double getTotalLoanCost(double initialBalance, double interestRate, double timePeriods,
+			CompoundInterval compoundInterval) {
+		return initialBalance * Math.pow((1 + ((interestRate / 100) / compoundInterval.amountInYear)),
+				compoundInterval.amountInYear * timePeriods);
 	}
 }
