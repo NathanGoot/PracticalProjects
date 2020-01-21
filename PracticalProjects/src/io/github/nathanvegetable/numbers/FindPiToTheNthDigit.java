@@ -2,6 +2,7 @@ package io.github.nathanvegetable.numbers;
 
 public class FindPiToTheNthDigit {
 	public static int DEFAULT_LIMIT = 10;
+	public static int MATH_PI_MAX_PRECISION = 15;
 
 	public static void main(String[] args) {
 		double result = FindPiToTheNthDigit.findWithMathPI(DEFAULT_LIMIT);
@@ -10,10 +11,10 @@ public class FindPiToTheNthDigit {
 
 	public static double findWithMathPI(int limit) {
 		// Math.PI has only precision up to 15 digits.
-		if (limit < 0 || limit > 15)
-			throw new IllegalArgumentException("limit must be > 0 && <= 15");
+		if (limit < 0 || limit > MATH_PI_MAX_PRECISION)
+			throw new IllegalArgumentException("limit must be > 0 && <= " + MATH_PI_MAX_PRECISION);
 		double pi = Math.PI;
-		String piString = doubleStringNoNotation(pi, 15).replace(".", "");
+		String piString = doubleStringNoNotation(pi, MATH_PI_MAX_PRECISION).replace(".", "");
 		piString = piString.substring(0, limit + 1);
 		return Double.parseDouble(piString);
 	}
