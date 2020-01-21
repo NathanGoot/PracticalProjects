@@ -1,5 +1,8 @@
 package io.github.nathanvegetable.numbers;
 
+/**
+ * @author Nathan Gutauckas
+ */
 public class FibonacciSequence {
 
 	public static void main(String[] args) {
