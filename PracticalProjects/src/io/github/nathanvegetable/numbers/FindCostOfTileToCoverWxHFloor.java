@@ -14,6 +14,11 @@ public class FindCostOfTileToCoverWxHFloor {
 	public final int DEFAULT_FLOOR_PLAN_WIDTH = 1500;
 	public final int DEFAULT_FLOOR_PLAN_HEIGHT = 1000;
 
+	public double findCostOfDefaultPlan(double tileCost) {
+		return findCostOfFloorPlan(tileCost, DEFAULT_TILE_WIDTH, DEFAULT_TILE_HEIGHT, DEFAULT_FLOOR_PLAN_WIDTH,
+				DEFAULT_FLOOR_PLAN_HEIGHT);
+	}
+
 	public double findCostOfFloorPlan(double tileCost, int tileWidth, int tileHeight, int floorPlanWidth,
 			int floorPlanHeight) {
 		double tilesWidthNeeded = Math.ceil((double) floorPlanWidth / (double) tileWidth);
