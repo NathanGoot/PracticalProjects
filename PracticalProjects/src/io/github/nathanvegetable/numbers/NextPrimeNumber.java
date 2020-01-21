@@ -1,6 +1,7 @@
 package io.github.nathanvegetable.numbers;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 /**
  * Project: Have the program find prime numbers until the user chooses to stop
@@ -12,8 +13,17 @@ import java.math.BigInteger;
 public class NextPrimeNumber {
 
 	public static void main(String[] args) {
-		int nextNumber = NextPrimeNumber.findNextPrimeNumber(1005);
-		System.out.println(nextNumber);
+		Scanner inputScanner = new Scanner(System.in);
+		System.out.print("Enter a starting integer: ");
+		int number = inputScanner.nextInt();
+		while (true) {
+			number = findNextPrimeNumber(number);
+			System.out.println(number);
+			System.out.println("Continue? ");
+			if (!inputScanner.nextBoolean())
+				break;
+		}
+		inputScanner.close();
 	}
 
 	public static int findNextPrimeNumber(int input) {
