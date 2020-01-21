@@ -13,15 +13,15 @@ import org.junit.jupiter.api.Test;
 class TestNumbers {
 
 	@Test
-	void piMathMaxPrecisionShouldHaveNoChange() {
-		double desiredResult = 3.141592653589793d;
-		assertEquals(desiredResult, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION));
+	void piMathShouldMatchHardcodePI15Digit() {
+		double hardcodedPI15Digit = 3.141592653589793d;
+		assertEquals(hardcodedPI15Digit, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION));
 	}
 
 	@Test
-	void piMathMaxPrecisionMinusOneShouldChange() {
-		double desiredResult = 3.14159265358979d;
-		assertEquals(desiredResult, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION - 1));
+	void piMathShouldMatchHardcodePI14Digit() {
+		double hardcodedPI14Digit = 3.14159265358979d;
+		assertEquals(hardcodedPI14Digit, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION - 1));
 	}
 
 }
