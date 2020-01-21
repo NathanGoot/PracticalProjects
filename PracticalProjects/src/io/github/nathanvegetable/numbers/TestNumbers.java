@@ -14,14 +14,14 @@ class TestNumbers {
 
 	@Test
 	void piMathMaxPrecisionShouldHaveNoChange() {
-		double pi = Math.PI;
-		assertEquals(pi, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION));
+		double desiredResult = 3.141592653589793d;
+		assertEquals(desiredResult, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION));
 	}
 
 	@Test
 	void piMathMaxPrecisionMinusOneShouldChange() {
-		double pi = Math.PI;
-		assertNotEquals(pi, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION - 1));
+		double desiredResult = 3.14159265358979d;
+		assertEquals(desiredResult, FindPiToTheNthDigit.findWithMathPI(FindPiToTheNthDigit.MATH_PI_MAX_PRECISION - 1));
 	}
 
 }
