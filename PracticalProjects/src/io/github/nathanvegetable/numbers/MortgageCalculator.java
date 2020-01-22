@@ -25,13 +25,7 @@ public class MortgageCalculator {
 		System.out.println("Enter the term length in years: ");
 		double termLength = inputScanner.nextDouble();
 
-		System.out.println("Enter the Compound Interval");
-		for (int i = 0; i < CompoundInterval.values().length; i++)
-			System.out.println((i + 1) + ": " + CompoundInterval.values()[i]);
-		System.out.println("Select from the above number options: ");
-		CompoundInterval interval = CompoundInterval.values()[inputScanner.nextInt() - 1];
-
-		double totalLoanCost = getTotalLoanCost(principal, yearlyInterest, termLength, interval);
+		double totalLoanCost = getTotalLoanCost(principal, yearlyInterest, termLength);
 		System.out.println("Total loan cost: " + totalLoanCost);
 
 		double monthlyPayments = totalLoanCost / termLength / 12d;
@@ -40,33 +34,22 @@ public class MortgageCalculator {
 		inputScanner.close();
 	}
 
-	public enum CompoundInterval {
-		DAILY(365.25), MONTHLY(12), YEARLY(1);
-		public double amountInYear;
-
-		CompoundInterval(double amountInYear) {
-			this.amountInYear = amountInYear;
-		}
-	}
-
-	public static double getLoanMonthlyPayment(double initialBalance, double interestRate, double timePeriods,
-			CompoundInterval compoundInterval) {
-		return getTotalLoanCost(initialBalance, interestRate, timePeriods, compoundInterval) / timePeriods / 12;
+	public static double getTotalLoanCost(double initialBalance, double interestRate, double yearsOfTerm) {
+		return getLoanMonthlyPayment(initialBalance, interestRate, yearsOfTerm) * 12 * yearsOfTerm;
 	}
 
 	/**
-	 * A = P (1 + r/n)^(nt)<br/>
-	 * A = the future value of the investment/loan, including interest<br/>
+	 * M = P [ i(1 + i)n ] / [ (1 + i)n - 1]<br/>
+	 * M = the monthly payment<br/>
 	 * P = the principal investment amount (the initial deposit or loan amount)<br/>
-	 * r = the annual interest rate (decimal)<br/>
-	 * n = the number of times that interest is compounded per unit t<br/>
-	 * t = the time the money is invested or borrowed for<br/>
-	 * <a href=
-	 * "https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php">Source</a>
+	 * r = the annual interest rate (decimal) divided by the compounding rate<br/>
+	 * n = the amount of payments<br/>
+	 * <a href="https://www.fonerbooks.com/interest.htm">Source</a>
 	 */
-	public static double getTotalLoanCost(double initialBalance, double interestRate, double timePeriods,
-			CompoundInterval compoundInterval) {
-		return initialBalance * Math.pow((1 + ((interestRate / 100) / compoundInterval.amountInYear)),
-				compoundInterval.amountInYear * timePeriods);
+	public static double getLoanMonthlyPayment(double initialBalance, double interestRate, double yearsOfTerm) {
+		double p = initialBalance;
+		double i = (interestRate / 100) / 12;
+		double n = 12 * yearsOfTerm;
+		return p * ((i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1));
 	}
 }
