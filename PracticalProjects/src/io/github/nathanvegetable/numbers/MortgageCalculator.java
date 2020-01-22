@@ -13,9 +13,6 @@ import java.util.Scanner;
  *
  */
 public class MortgageCalculator {
-	public static final double DEFAULT_TOTAL_COST = 100000d;
-	public static final double DEFAULT_YEARLY_INTEREST = 0.1d;
-	public static final int DEFAULT_TERM_IN_YEARS = 30;
 
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
@@ -36,7 +33,7 @@ public class MortgageCalculator {
 
 		double totalLoanCost = getTotalLoanCost(principal, yearlyInterest, termLength, interval);
 		System.out.println("Total loan cost: " + totalLoanCost);
-		
+
 		inputScanner.close();
 	}
 
