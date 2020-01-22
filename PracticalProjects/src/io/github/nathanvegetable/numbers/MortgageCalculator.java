@@ -33,6 +33,9 @@ public class MortgageCalculator {
 
 		double totalLoanCost = getTotalLoanCost(principal, yearlyInterest, termLength, interval);
 		System.out.println("Total loan cost: " + totalLoanCost);
+		
+		double monthlyPayments = totalLoanCost / termLength / 12d;
+		System.out.println("Fixed monthly payments: " + monthlyPayments + " for " + (termLength / 12d) + " months.");
 
 		inputScanner.close();
 	}
