@@ -1,5 +1,7 @@
 package io.github.nathanvegetable.numbers;
 
+import java.util.Scanner;
+
 /**
  * Project: Mortgage Calculator - Calculate the monthly payments of a fixed term
  * mortgage over given Nth terms at a given interest rate. Also figure out how
@@ -16,7 +18,26 @@ public class MortgageCalculator {
 	public static final int DEFAULT_TERM_IN_YEARS = 30;
 
 	public static void main(String[] args) {
-		System.out.println(MortgageCalculator.getTotalLoanCost(5000, 5, 10, CompoundInterval.MONTHLY));
+		Scanner inputScanner = new Scanner(System.in);
+		System.out.print("Enter the beginning principal amount: ");
+		double principal = inputScanner.nextDouble();
+
+		System.out.println("Enter the yearly interest percentage: ");
+		double yearlyInterest = inputScanner.nextDouble();
+
+		System.out.println("Enter the term length in years: ");
+		double termLength = inputScanner.nextDouble();
+
+		System.out.println("Enter the Compound Interval");
+		for (int i = 0; i < CompoundInterval.values().length; i++)
+			System.out.println((i + 1) + ": " + CompoundInterval.values()[i]);
+		System.out.println("Select from the above number options: ");
+		CompoundInterval interval = CompoundInterval.values()[inputScanner.nextInt() - 1];
+
+		double totalLoanCost = getTotalLoanCost(principal, yearlyInterest, termLength, interval);
+		System.out.println("Total loan cost: " + totalLoanCost);
+		
+		inputScanner.close();
 	}
 
 	public enum CompoundInterval {
