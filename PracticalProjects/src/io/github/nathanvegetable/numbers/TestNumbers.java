@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**
+ * JUnit Test class to ensure every class contained within package
+ * io.github.nathanvegetable.numbers returns expected results.
+ * 
  * @author NathanVegetable
  */
 class TestNumbers {

@@ -34,6 +34,16 @@ public class MortgageCalculator {
 		inputScanner.close();
 	}
 
+	/**
+	 * 
+	 * @param initialBalance
+	 *            Principal investment amount
+	 * @param interestRate
+	 *            The annual interest rate (whole percent)
+	 * @param yearsOfTerm
+	 * @return
+	 * @see {@link #getLoanMonthlyPayment(double, double, double)}
+	 */
 	public static double getTotalLoanCost(double initialBalance, double interestRate, double yearsOfTerm) {
 		return getLoanMonthlyPayment(initialBalance, interestRate, yearsOfTerm) * 12 * yearsOfTerm;
 	}
@@ -45,6 +55,13 @@ public class MortgageCalculator {
 	 * r = the annual interest rate (decimal) divided by the compounding rate<br/>
 	 * n = the amount of payments<br/>
 	 * <a href="https://www.fonerbooks.com/interest.htm">Source</a>
+	 * 
+	 * @param initialBalance
+	 *            Principal investment amount
+	 * @param interestRate
+	 *            The annual interest rate (whole percent)
+	 * @param yearsOfTerm
+	 * @return
 	 */
 	public static double getLoanMonthlyPayment(double initialBalance, double interestRate, double yearsOfTerm) {
 		double p = initialBalance;

@@ -27,6 +27,11 @@ public class NextPrimeNumber {
 		inputScanner.close();
 	}
 
+	/**
+	 * @param input
+	 *            The starting number to start searching after
+	 * @return The next valid prime number after <b>input</b>
+	 */
 	public static int findNextPrimeNumber(int input) {
 		int nextNum = ++input;
 		while (!isPrimeNumber(nextNum))
@@ -34,11 +39,23 @@ public class NextPrimeNumber {
 		return nextNum;
 	}
 
+	/**
+	 * Uses {@link BigInteger#nextProbablePrime()} to quickly find the next
+	 * 'probable' Prime
+	 * 
+	 * @param input
+	 *            The starting number to start searching after
+	 * @return The next valid prime number after <b>input</b>
+	 */
 	public static int findNextPrimeNumberWithBigInteger(int input) {
 		BigInteger bigInt = new BigInteger(String.valueOf(input));
 		return Integer.parseInt(bigInt.nextProbablePrime().toString());
 	}
 
+	/**
+	 * @param input
+	 * @return Whether or not <b>input</b> is Prime
+	 */
 	public static boolean isPrimeNumber(int input) {
 		if (input < 2)
 			return false;

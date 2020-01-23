@@ -14,6 +14,12 @@ public class FibonacciSequence {
 			System.out.println("" + num);
 	}
 
+	/**
+	 * @param digits
+	 *            Amount of numbers in the sequence to return.
+	 * @return An {@link int} array of the Fibonacci Sequence matching length of
+	 *         <b>digits</b>.
+	 */
 	public static int[] getSequence(int digits) {
 		if (digits <= 0)
 			throw new IllegalArgumentException("digits must be > 0");

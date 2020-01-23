@@ -17,6 +17,11 @@ public class PrimeFactorization {
 			System.out.println("" + num);
 	}
 
+	/**
+	 * 
+	 * @param input
+	 * @return An {@link ArrayList} containing all Prime Factors of <b>input</b>
+	 */
 	public static ArrayList<Integer> findPrimeFactors(int input) {
 		ArrayList<Integer> primeFactors = new ArrayList<Integer>();
 		for (int i = 2; i <= input; i++) {

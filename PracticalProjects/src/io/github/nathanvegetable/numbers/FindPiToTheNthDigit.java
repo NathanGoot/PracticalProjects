@@ -18,9 +18,12 @@ public class FindPiToTheNthDigit {
 	}
 
 	/**
-	 * Finds Pi to the Nth digit.<br/>
 	 * Has a max precision of 15 digits due to {@link Math#PI} only storing 15
 	 * digits.
+	 * 
+	 * @param limit
+	 *            The amount of decimals to trim the result to
+	 * @return Pi to the Nth digit.
 	 */
 	public static double findWithMathPI(int limit) {
 		if (limit < 0 || limit > MATH_PI_MAX_PRECISION)

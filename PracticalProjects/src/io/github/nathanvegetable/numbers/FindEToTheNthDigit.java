@@ -14,6 +14,14 @@ public class FindEToTheNthDigit {
 		System.out.println(result);
 	}
 
+	/**
+	 * 
+	 * @param input
+	 *            The number to trim to a specific amount of <b>digit</b>s
+	 * @param digits
+	 *            How many decimal places are allowed
+	 * @return The number trimmed to the amount of decimal places
+	 */
 	public static double findWithStringFormat(double input, int digits) {
 		return Double.parseDouble(String.format("%." + digits + "f", input));
 	}
