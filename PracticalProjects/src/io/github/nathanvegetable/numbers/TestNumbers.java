@@ -65,4 +65,11 @@ class TestNumbers {
 				FindCostOfTileToCoverWxHFloor.findCostOfFloorPlan(cost, tileSize, tileSize, floorSize, floorSize));
 	}
 
+	@Test
+	void mortgageOf10000At4PercentOver10YearsShouldBe101() {
+		double monthlyPayment = MortgageCalculator.getLoanMonthlyPayment(10000d, 4d, 10d);
+		monthlyPayment = Math.round(monthlyPayment);
+		assertEquals(101, monthlyPayment);
+	}
+
 }
