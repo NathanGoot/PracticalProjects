@@ -1,5 +1,6 @@
 package io.github.nathanvegetable.numbers;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -23,12 +24,12 @@ public class ChangeReturn {
 		System.out.print("Enter the amount of money given: ");
 		double given = inputScanner.nextDouble();
 
-		int[] change = getChange(cost, given);
+		int[] change = getChange(BigDecimal.valueOf(cost), BigDecimal.valueOf(given));
 
 		System.out.print("Change needed to return:");
-		for (int i = 0; i < RETURN_ORDER.length; i++) 
+		for (int i = 0; i < RETURN_ORDER.length; i++)
 			System.out.println(RETURN_ORDER[i] + ": " + change[i]);
-		
+
 		inputScanner.close();
 	}
 
@@ -42,14 +43,14 @@ public class ChangeReturn {
 	 *         giving the amount of change per change type given to give back for
 	 *         over-payment of the <b>cost</b>
 	 */
-	public static int[] getChange(double cost, double amountGiven) {
-		double overPaid = amountGiven - cost;
+	public static int[] getChange(BigDecimal cost, BigDecimal amountGiven) {
+		BigDecimal overPaid = amountGiven.subtract(cost);
 		int[] changeAmounts = new int[RETURN_VALUES.length];
 		for (int i = 0; i < changeAmounts.length; i++) {
 			double changeValue = RETURN_VALUES[i];
-			while (overPaid >= changeValue) {
+			while (overPaid.doubleValue() >= changeValue) {
 				changeAmounts[i]++;
-				overPaid -= changeValue;
+				overPaid = overPaid.subtract(BigDecimal.valueOf(changeValue));
 			}
 		}
 		return changeAmounts;
