@@ -1,6 +1,7 @@
 package io.github.nathanvegetable.numbers;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Project: Binary to Decimal and Back Converter - Develop a converter to
@@ -12,7 +13,17 @@ import java.util.ArrayList;
  */
 public class BinaryDecimalConverter {
 	public static void main(String[] args) {
+		Scanner inputScanner = new Scanner(System.in);
+		System.out.print("Enter the decimal to convert to binary: ");
+		long decimal = inputScanner.nextLong();
 		
+		long binary = decimalToBinary(decimal);
+		System.out.println("Decimal represented in binary: " + binary);
+		
+		decimal = binaryToDecimal(binary);
+		System.out.println("Converted back to decimal: " + decimal);
+		
+		inputScanner.close();
 	}
 
 	public static long binaryToDecimal(long decimalValue) {
