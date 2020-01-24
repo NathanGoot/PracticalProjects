@@ -37,7 +37,15 @@ public class ChangeReturn {
 	 *         over-payment of the <b>cost</b>
 	 */
 	public static int[] getChange(double cost, double amountGiven) {
-		// TODO
-		return null;
+		double overPaid = amountGiven - cost;
+		int[] changeAmounts = new int[RETURN_VALUES.length];
+		for (int i = 0; i < changeAmounts.length; i++) {
+			double changeValue = RETURN_VALUES[i];
+			while (overPaid >= changeValue) {
+				changeAmounts[i]++;
+				overPaid -= changeValue;
+			}
+		}
+		return changeAmounts;
 	}
 }
