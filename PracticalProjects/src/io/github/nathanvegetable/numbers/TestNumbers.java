@@ -45,7 +45,7 @@ class TestNumbers {
 	}
 
 	@Test
-	void primeFactorOf15Is3And5() {
+	void primeFactorOf15ShouldBe3And5() {
 		ArrayList<Integer> result = PrimeFactorization.findPrimeFactors(15);
 		boolean[] found = new boolean[2];
 		int[] lookingFor = new int[] { 3, 5 };
