@@ -27,8 +27,12 @@ public class BinaryDecimalConverter {
 	}
 
 	public static long binaryToDecimal(long binaryValue) {
-		// TODO
-		return -1;
+		long decimalValue = 0;
+		String binaryAsString = String.valueOf(binaryValue);
+		for (int i = 0; i < binaryAsString.length(); i++)
+			if (binaryAsString.charAt(i) == '1')
+				decimalValue += Math.pow(2, (binaryAsString.length() - i - 1));
+		return decimalValue;
 	}
 
 	public static long decimalToBinary(long decimalValue) {
