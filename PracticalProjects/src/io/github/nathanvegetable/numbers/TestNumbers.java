@@ -2,6 +2,7 @@ package io.github.nathanvegetable.numbers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -73,6 +74,13 @@ class TestNumbers {
 		double monthlyPayment = MortgageCalculator.getLoanMonthlyPayment(10000d, 4d, 10d);
 		monthlyPayment = Math.round(monthlyPayment);
 		assertEquals(101, monthlyPayment);
+	}
+
+	@Test
+	void changeReturnedFor41CentsShouldBe1OfEachCoin() {
+		int[] allChange = ChangeReturn.getChange(BigDecimal.valueOf(1.00d), BigDecimal.valueOf(1.41d));
+		for (int changeAmount : allChange)
+			assertEquals(1, changeAmount);
 	}
 
 }
