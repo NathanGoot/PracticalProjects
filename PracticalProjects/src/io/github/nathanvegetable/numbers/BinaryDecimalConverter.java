@@ -26,16 +26,16 @@ public class BinaryDecimalConverter {
 		inputScanner.close();
 	}
 
-	public static long binaryToDecimal(long decimalValue) {
+	public static long binaryToDecimal(long binaryValue) {
 		// TODO
 		return -1;
 	}
 
-	public static long decimalToBinary(long binaryValue) {
+	public static long decimalToBinary(long decimalValue) {
 		// Represent 1 as TRUE, 0 as FALSE
 		ArrayList<Boolean> binaryRepresentation = new ArrayList<Boolean>();
 		binaryRepresentation.add(Boolean.FALSE);
-		while (binaryValue > 0) {
+		while (decimalValue > 0) {
 			boolean foundEmptyDecimal = false;
 			for (int index = binaryRepresentation.size() - 1; index >= 0 && !foundEmptyDecimal; index--) {
 				// Look for the rightmost instance of 0 and increment it
@@ -45,7 +45,7 @@ public class BinaryDecimalConverter {
 						// Set all decimals to the right of the new 1 to 0
 						binaryRepresentation.set(i, Boolean.FALSE);
 					}
-					binaryValue--;
+					decimalValue--;
 					foundEmptyDecimal = true;
 				}
 			}
@@ -54,7 +54,7 @@ public class BinaryDecimalConverter {
 				for (int i = 0; i < binaryRepresentation.size(); i++)
 					binaryRepresentation.set(i, Boolean.FALSE);
 				binaryRepresentation.add(0, Boolean.TRUE);
-				binaryValue--;
+				decimalValue--;
 			}
 		}
 		String decimalsInString = "";
