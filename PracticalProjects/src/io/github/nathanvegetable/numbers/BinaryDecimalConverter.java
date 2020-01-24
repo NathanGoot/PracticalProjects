@@ -26,6 +26,11 @@ public class BinaryDecimalConverter {
 		inputScanner.close();
 	}
 
+	/**
+	 * @param binaryValue
+	 *            Number to convert into decimal representation
+	 * @return <b>binaryValue</b> as decimal
+	 */
 	public static long binaryToDecimal(long binaryValue) {
 		long decimalValue = 0;
 		String binaryAsString = String.valueOf(binaryValue);
@@ -35,6 +40,11 @@ public class BinaryDecimalConverter {
 		return decimalValue;
 	}
 
+	/**
+	 * @param decimalValue
+	 *            Number to convert into binary representation
+	 * @return <b>decimalValue</b> as binary
+	 */
 	public static long decimalToBinary(long decimalValue) {
 		// Represent 1 as TRUE, 0 as FALSE
 		ArrayList<Boolean> binaryRepresentation = new ArrayList<Boolean>();
