@@ -26,6 +26,16 @@ public class ChangeReturn {
 		int[] change = getChange(cost, given);
 	}
 
+	/**
+	 * 
+	 * @param cost
+	 *            The starting cost
+	 * @param amountGiven
+	 *            The amount paid towards the cost
+	 * @return An array following {@link #RETURN_ORDER} and {@link #RETURN_VALUES}
+	 *         giving the amount of change per change type given to give back for
+	 *         over-payment of the <b>cost</b>
+	 */
 	public static int[] getChange(double cost, double amountGiven) {
 		// TODO
 		return null;
