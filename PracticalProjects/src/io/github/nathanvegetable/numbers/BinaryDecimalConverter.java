@@ -38,6 +38,7 @@ public class BinaryDecimalConverter {
 		while (binaryValue > 0) {
 			boolean foundEmptyDecimal = false;
 			for (int index = decimalRepresentation.size() - 1; index >= 0 && !foundEmptyDecimal; index--) {
+				// Look for the rightmost instance of 0 and increment it
 				if (!decimalRepresentation.get(index)) {
 					decimalRepresentation.set(index, Boolean.TRUE);
 					for (int i = index + 1; i < decimalRepresentation.size(); i++) {
