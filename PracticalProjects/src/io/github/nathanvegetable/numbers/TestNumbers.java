@@ -83,4 +83,10 @@ class TestNumbers {
 			assertEquals(1, changeAmount);
 	}
 
+	@Test
+	void binary1011ShouldBe11Decimal() {
+		assertEquals(11, BinaryDecimalConverter.binaryToDecimal(1011));
+		assertEquals(1011, BinaryDecimalConverter.decimalToBinary(11));
+	}
+
 }
