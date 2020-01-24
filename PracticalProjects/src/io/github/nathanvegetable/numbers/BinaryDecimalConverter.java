@@ -40,6 +40,10 @@ public class BinaryDecimalConverter {
 			for (int index = decimalRepresentation.size() - 1; index >= 0 && !foundEmptyDecimal; index--) {
 				if (!decimalRepresentation.get(index)) {
 					decimalRepresentation.set(index, Boolean.TRUE);
+					for (int i = index + 1; i < decimalRepresentation.size(); i++) {
+						// Set all decimals to the right of the new 1 to 0
+						decimalRepresentation.set(i, Boolean.FALSE);
+					}
 					binaryValue--;
 					foundEmptyDecimal = true;
 				}
