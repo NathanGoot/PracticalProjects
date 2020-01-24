@@ -49,8 +49,7 @@ public class BinaryDecimalConverter {
 				}
 			}
 			if (!foundEmptyDecimal) {
-				// There was no 0 found to increment. Add a new leftmost 1 and set all others to
-				// 0
+				// There was no 0 found to increment. Add a new leftmost 1 and set others to 0
 				for (int i = 0; i < decimalRepresentation.size(); i++)
 					decimalRepresentation.set(i, Boolean.FALSE);
 				decimalRepresentation.add(0, Boolean.TRUE);
