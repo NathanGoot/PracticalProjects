@@ -24,6 +24,12 @@ public class ChangeReturn {
 		double given = inputScanner.nextDouble();
 
 		int[] change = getChange(cost, given);
+
+		System.out.print("Change needed to return:");
+		for (int i = 0; i < RETURN_ORDER.length; i++) 
+			System.out.println(RETURN_ORDER[i] + ": " + change[i]);
+		
+		inputScanner.close();
 	}
 
 	/**
