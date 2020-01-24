@@ -33,17 +33,17 @@ public class BinaryDecimalConverter {
 
 	public static long decimalToBinary(long binaryValue) {
 		// Represent 1 as TRUE, 0 as FALSE
-		ArrayList<Boolean> decimalRepresentation = new ArrayList<Boolean>();
-		decimalRepresentation.add(Boolean.FALSE);
+		ArrayList<Boolean> binaryRepresentation = new ArrayList<Boolean>();
+		binaryRepresentation.add(Boolean.FALSE);
 		while (binaryValue > 0) {
 			boolean foundEmptyDecimal = false;
-			for (int index = decimalRepresentation.size() - 1; index >= 0 && !foundEmptyDecimal; index--) {
+			for (int index = binaryRepresentation.size() - 1; index >= 0 && !foundEmptyDecimal; index--) {
 				// Look for the rightmost instance of 0 and increment it
-				if (!decimalRepresentation.get(index)) {
-					decimalRepresentation.set(index, Boolean.TRUE);
-					for (int i = index + 1; i < decimalRepresentation.size(); i++) {
+				if (!binaryRepresentation.get(index)) {
+					binaryRepresentation.set(index, Boolean.TRUE);
+					for (int i = index + 1; i < binaryRepresentation.size(); i++) {
 						// Set all decimals to the right of the new 1 to 0
-						decimalRepresentation.set(i, Boolean.FALSE);
+						binaryRepresentation.set(i, Boolean.FALSE);
 					}
 					binaryValue--;
 					foundEmptyDecimal = true;
@@ -51,14 +51,14 @@ public class BinaryDecimalConverter {
 			}
 			if (!foundEmptyDecimal) {
 				// There was no 0 found to increment. Add a new leftmost 1 and set others to 0
-				for (int i = 0; i < decimalRepresentation.size(); i++)
-					decimalRepresentation.set(i, Boolean.FALSE);
-				decimalRepresentation.add(0, Boolean.TRUE);
+				for (int i = 0; i < binaryRepresentation.size(); i++)
+					binaryRepresentation.set(i, Boolean.FALSE);
+				binaryRepresentation.add(0, Boolean.TRUE);
 				binaryValue--;
 			}
 		}
 		String decimalsInString = "";
-		for (Boolean decimal : decimalRepresentation)
+		for (Boolean decimal : binaryRepresentation)
 			decimalsInString += decimal ? "1" : "0";
 		return Long.parseLong(decimalsInString);
 	}
