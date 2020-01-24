@@ -16,13 +16,13 @@ public class BinaryDecimalConverter {
 		Scanner inputScanner = new Scanner(System.in);
 		System.out.print("Enter the decimal to convert to binary: ");
 		long decimal = inputScanner.nextLong();
-		
+
 		long binary = decimalToBinary(decimal);
 		System.out.println("Decimal represented in binary: " + binary);
-		
+
 		decimal = binaryToDecimal(binary);
 		System.out.println("Converted back to decimal: " + decimal);
-		
+
 		inputScanner.close();
 	}
 
@@ -45,9 +45,10 @@ public class BinaryDecimalConverter {
 				}
 			}
 			if (!foundEmptyDecimal) {
-				// There was no 0 found to increment. Take the leftmost decimal, switch it to 0,
-				// and add a new leftmost 1
-				decimalRepresentation.set(0, Boolean.FALSE);
+				// There was no 0 found to increment. Add a new leftmost 1 and set all others to
+				// 0
+				for (int i = 0; i < decimalRepresentation.size(); i++)
+					decimalRepresentation.set(i, Boolean.FALSE);
 				decimalRepresentation.add(0, Boolean.TRUE);
 				binaryValue--;
 			}
