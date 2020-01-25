@@ -43,7 +43,7 @@ public class Calculator {
 		display.setEditable(false);
 		display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		display.setFont(DISPLAY_FONT);
-		mainPanel.add(display);
+		mainPanel.add(display, BorderLayout.NORTH);
 
 		mainFrame.pack();
 		// Set to center of screen
