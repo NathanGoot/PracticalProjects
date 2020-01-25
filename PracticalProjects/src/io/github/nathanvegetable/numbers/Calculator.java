@@ -115,7 +115,7 @@ public class Calculator {
 			case "":
 				break;
 			default:
-				System.err.println("action not recongized:" + action);
+				System.err.println("action not recongized: " + action);
 				break;
 			}
 		}
