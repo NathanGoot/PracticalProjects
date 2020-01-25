@@ -54,9 +54,13 @@ public class Calculator {
 		mainPanel.add(display, BorderLayout.NORTH);
 
 		JPanel buttonPanel = new JPanel();
-		String buttonsAsString = "789456123-0.";
-		for (int i = 0; i < buttonsAsString.length(); i++)
-			addButton(buttonPanel, buttonsAsString.substring(i, i + 1));
+		String buttonsAsString = "789456123_0.";
+		for (int i = 0; i < buttonsAsString.length(); i++) {
+			String button = buttonsAsString.substring(i, i + 1);
+			if (button.equals("_")) // Special case
+				button = "+/-";
+			addButton(buttonPanel, button);
+		}
 
 		mainPanel.add(buttonPanel, BorderLayout.CENTER);
 
