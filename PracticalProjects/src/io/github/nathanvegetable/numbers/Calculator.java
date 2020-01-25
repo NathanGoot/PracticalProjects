@@ -5,6 +5,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -37,6 +38,7 @@ public class Calculator {
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout(5, 5));
+		mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		mainFrame.add(mainPanel);
 
 		display = new JTextField("0", 12);
