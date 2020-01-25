@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
@@ -87,5 +88,32 @@ public class Calculator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Listener specifically for number functions
+	 */
+	private class NumberListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String number = e.getActionCommand();
+			display.setText(display.getText() + number);
+		}
+	}
+
+	/**
+	 * Listener for all non-number functions
+	 */
+	private class SpecialListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			String action = e.getActionCommand();
+			switch (action) {
+			// TODO: Add other functions
+			case "":
+				break;
+			default:
+				System.err.println("action not recongized:" + action);
+				break;
+			}
+		}
 	}
 }
