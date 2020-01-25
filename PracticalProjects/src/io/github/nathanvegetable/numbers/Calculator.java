@@ -112,7 +112,12 @@ public class Calculator {
 			String action = e.getActionCommand();
 			switch (action) {
 			// TODO: Add other functions
-			case "":
+			case "+/-":
+				String currentNum = display.getText();
+				if (!currentNum.endsWith("-"))
+					display.setText(currentNum + "-");
+				else
+					display.setText(currentNum.split("-")[0]);
 				break;
 			default:
 				System.err.println("action not recongized: " + action);
