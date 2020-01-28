@@ -160,18 +160,23 @@ public class Calculator {
 				display.setText(currentNum + "-");
 			else
 				display.setText(currentNum.split("-")[0]);
+			System.out.println("Switched polarity of number to " + display.getText());
+
 		}
 
 		public void clear() {
 			display.setText("0");
 			calculatingNumber = null;
 			calculationOperator = null;
+			System.out.println("Cleared screen and calculations.");
 		}
 
 		public void startCalculation(String calculationOperator) {
 			clear();
 			this.calculationOperator = calculationOperator;
 			calculatingNumber = display.getText();
+			System.out.println(
+					"Starting calculation with number " + calculatingNumber + "and operator " + calculationOperator);
 		}
 
 		public void endCalculation() {
