@@ -159,6 +159,8 @@ public class Calculator {
 
 		public void clear() {
 			display.setText("0");
+			calculatingNumber = null;
+			calculationOperator = null;
 		}
 
 		public void startCalculation(String calculationOperator) {
