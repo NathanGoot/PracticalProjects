@@ -297,14 +297,7 @@ public class Calculator {
 				displayText = displayText.substring(1);
 
 			boolean isNegative = displayText.endsWith("-") || displayText.startsWith("-");
-			return Double.parseDouble(displayText.replace("-", "").replace(".", "")) * (isNegative ? -1 : 1);
-		}
-
-		private String reverseString(String input) {
-			String reversed = "";
-			for (int i = input.length() - 1; i >= 0; i--)
-				reversed += input.charAt(i);
-			return reversed;
+			return Double.parseDouble(displayText.replace("-", "")) * (isNegative ? -1 : 1);
 		}
 	}
 }
