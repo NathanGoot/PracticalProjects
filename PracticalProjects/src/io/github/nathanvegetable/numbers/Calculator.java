@@ -29,6 +29,8 @@ public class Calculator {
 	NumberListener numberListener = new NumberListener();
 	SpecialListener specialListener = new SpecialListener();
 
+	private Logic logic = new Logic();
+
 	public static void main(String[] args) {
 		Calculator calculator = new Calculator();
 		calculator.display();
@@ -85,10 +87,6 @@ public class Calculator {
 		mainFrame.setVisible(true);
 	}
 
-	public void clear() {
-		display.setText("0");
-	}
-
 	private void addButton(JPanel panel, String buttonText) {
 		ActionListener listener = null;
 		if (isInt(buttonText))
@@ -129,19 +127,29 @@ public class Calculator {
 			switch (action) {
 			// TODO: Add other functions
 			case "+/-":
-				String currentNum = display.getText();
-				if (!currentNum.endsWith("-"))
-					display.setText(currentNum + "-");
-				else
-					display.setText(currentNum.split("-")[0]);
+				logic.switchPolarity();
 				break;
 			case "C":
-				clear();
+				logic.clear();
 				break;
 			default:
 				System.err.println("action not recongized: " + action);
 				break;
 			}
+		}
+	}
+
+	private class Logic {
+		public void switchPolarity() {
+			String currentNum = display.getText();
+			if (!currentNum.endsWith("-"))
+				display.setText(currentNum + "-");
+			else
+				display.setText(currentNum.split("-")[0]);
+		}
+
+		public void clear() {
+			display.setText("0");
 		}
 	}
 }
