@@ -114,6 +114,7 @@ public class Calculator {
 	private class NumberListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String number = e.getActionCommand();
+			System.out.println("Pressed number: " + number);
 			display.setText(display.getText() + number);
 		}
 	}
@@ -124,6 +125,7 @@ public class Calculator {
 	private class SpecialListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			String action = e.getActionCommand();
+			System.out.println("Pressed action: " + action);
 			switch (action) {
 			// TODO: Add other functions
 			case "+/-":
@@ -179,18 +181,23 @@ public class Calculator {
 			double operand = getNumber(display.getText());
 			switch (calculationOperator) {
 			case "÷":
+				System.out.println("Dividing " + number + " by " + operand);
 				number = number / operand;
 				break;
 			case "x":
+				System.out.println("Multiplying " + number + " by " + operand);
 				number = number * operand;
 				break;
 			case "-":
+				System.out.println("Subtracting " + operand + " from " + number);
 				number = number - operand;
 				break;
 			case "+":
+				System.out.println("Adding " + operand + " to " + number);
 				number = number + operand;
 				break;
 			}
+			System.out.println("Result: " + number);
 			display.setText(getDisplayText(number));
 		}
 
