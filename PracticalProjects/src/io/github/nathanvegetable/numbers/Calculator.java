@@ -128,7 +128,6 @@ public class Calculator {
 			String action = e.getActionCommand();
 			System.out.println("Pressed action: " + action);
 			switch (action) {
-			// TODO: Add other functions
 			case "+/-":
 				logic.switchPolarity();
 				break;
@@ -273,6 +272,9 @@ public class Calculator {
 			String stringRep = doubleToStringNoScientificNotation(number);
 			while (stringRep.endsWith("0"))
 				stringRep = stringRep.substring(0, stringRep.length() - 1);
+
+			if (stringRep.startsWith("-"))
+				stringRep = stringRep.substring(1) + "-";
 			return stringRep;
 		}
 
