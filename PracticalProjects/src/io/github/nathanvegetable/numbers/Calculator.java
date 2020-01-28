@@ -115,7 +115,7 @@ public class Calculator {
 		public void actionPerformed(ActionEvent e) {
 			String number = e.getActionCommand();
 			System.out.println("Pressed number: " + number);
-			display.setText(display.getText() + number);
+			logic.insertNumber(number);
 		}
 	}
 
@@ -153,6 +153,11 @@ public class Calculator {
 	private class Logic {
 		private String calculatingNumber = null;
 		private String calculationOperator = null;
+		
+		public void insertNumber(String number) {
+			display.setText(display.getText() + number);
+			System.out.println("Inserted number: " + number);
+		}
 
 		public void switchPolarity() {
 			String currentNum = display.getText();
