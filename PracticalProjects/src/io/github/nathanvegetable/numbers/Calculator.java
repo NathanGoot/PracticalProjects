@@ -138,6 +138,9 @@ public class Calculator {
 			case "+":
 				logic.startCalculation(action);
 				break;
+			case "=":
+				logic.endCalculation();
+				break;
 			default:
 				System.err.println("action not recongized: " + action);
 				break;
@@ -167,6 +170,25 @@ public class Calculator {
 			clear();
 			this.calculationOperator = calculationOperator;
 			calculatingNumber = display.getText();
+		}
+
+		public void endCalculation() {
+			if (calculatingNumber == null)
+				return;
+			switch (calculationOperator) {
+			case "÷":
+				// TODO: divide
+				break;
+			case "x":
+				// TODO: multiply
+				break;
+			case "-":
+				// TODO: subtract
+				break;
+			case "+":
+				// TODO: add
+				break;
+			}
 		}
 	}
 }
