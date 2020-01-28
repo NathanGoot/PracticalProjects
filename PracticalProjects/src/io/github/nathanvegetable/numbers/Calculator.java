@@ -65,6 +65,17 @@ public class Calculator {
 
 		mainPanel.add(numberButtonsPanel, BorderLayout.CENTER);
 
+		JPanel functionButtonsPanel = new JPanel(new GridLayout(0, 1));
+		buttonsAsString = "<C÷x-+=";
+		for (int i = 0; i < buttonsAsString.length(); i++) {
+			String button = buttonsAsString.substring(i, i + 1);
+			if (button.equals("<")) // Special case
+				button = "Del";
+			addButton(functionButtonsPanel, button);
+		}
+
+		mainPanel.add(functionButtonsPanel, BorderLayout.EAST);
+
 		mainFrame.pack();
 		// Set to center of screen
 		mainFrame.setLocationRelativeTo(null);
