@@ -85,6 +85,10 @@ public class Calculator {
 		mainFrame.setVisible(true);
 	}
 
+	public void clear() {
+		display.setText("0");
+	}
+
 	private void addButton(JPanel panel, String buttonText) {
 		ActionListener listener = null;
 		if (isInt(buttonText))
@@ -130,6 +134,9 @@ public class Calculator {
 					display.setText(currentNum + "-");
 				else
 					display.setText(currentNum.split("-")[0]);
+				break;
+			case "C":
+				clear();
 				break;
 			default:
 				System.err.println("action not recongized: " + action);
