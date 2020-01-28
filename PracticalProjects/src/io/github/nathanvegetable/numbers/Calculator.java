@@ -137,6 +137,9 @@ public class Calculator {
 			case "Del":
 				logic.delete();
 				break;
+			case ".":
+				logic.insertPeriod();
+				break;
 			case "÷":
 			case "x":
 			case "-":
@@ -174,6 +177,12 @@ public class Calculator {
 			System.out.println("Inserted number: " + number);
 		}
 
+		public void insertPeriod() {
+			if (display.getText().contains("."))
+				return;
+			display.setText("." + display.getText());
+		}
+
 		public void delete() {
 			String currentText = display.getText();
 			if (currentText.length() == 1) {
@@ -181,7 +190,7 @@ public class Calculator {
 				return;
 			}
 			currentText = currentText.substring(0, currentText.length() - 1);
-			if(currentText.equals("0")) {
+			if (currentText.equals("0")) {
 				clearScreen();
 				return;
 			}
