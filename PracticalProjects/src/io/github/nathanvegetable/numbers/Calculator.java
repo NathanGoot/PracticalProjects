@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -211,7 +212,6 @@ public class Calculator {
 			else
 				display.setText(currentNum.split("-")[0]);
 			System.out.println("Switched polarity of number to " + display.getText());
-
 		}
 
 		public void clearAll() {
@@ -269,10 +269,25 @@ public class Calculator {
 		public String getDisplayText(double number) {
 			if (Math.round(number) == number)
 				return "" + (int) number;
-			String stringRep = String.valueOf(number);
+
+			String stringRep = doubleToStringNoScientificNotation(number);
 			while (stringRep.endsWith("0"))
 				stringRep = stringRep.substring(0, stringRep.length() - 1);
 			return stringRep;
+		}
+
+		private String doubleToStringNoScientificNotation(double input) {
+			String normalString = String.valueOf(input);
+			if (!normalString.contains("E"))
+				return normalString;
+			// Get the amount of E
+			int precision = Integer.parseInt(normalString.split("E")[1]);
+			// Get the amount of digits left of E
+			precision += normalString.split("E")[0].split("\\.")[1].length();
+
+			DecimalFormat df = new DecimalFormat("#");
+			df.setMaximumFractionDigits(precision);
+			return df.format(input);
 		}
 
 		public double getNumber(String displayText) {
@@ -280,9 +295,9 @@ public class Calculator {
 			// the front)
 			if (displayText.startsWith("."))
 				displayText = displayText.substring(1);
-			
-			boolean isNegative = displayText.endsWith("-");
-			return Double.parseDouble(reverseString(displayText.replace("-", ""))) * (isNegative ? -1 : 1);
+
+			boolean isNegative = displayText.endsWith("-") || displayText.startsWith("-");
+			return Double.parseDouble(displayText.replace("-", "").replace(".", "")) * (isNegative ? -1 : 1);
 		}
 
 		private String reverseString(String input) {
