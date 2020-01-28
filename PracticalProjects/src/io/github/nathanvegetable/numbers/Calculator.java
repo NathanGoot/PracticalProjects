@@ -134,6 +134,9 @@ public class Calculator {
 			case "C":
 				logic.clearAll();
 				break;
+			case "Del":
+				logic.delete();
+				break;
 			case "÷":
 			case "x":
 			case "-":
@@ -169,6 +172,20 @@ public class Calculator {
 			} else
 				display.setText(display.getText() + number);
 			System.out.println("Inserted number: " + number);
+		}
+
+		public void delete() {
+			String currentText = display.getText();
+			if (currentText.length() == 1) {
+				clearScreen();
+				return;
+			}
+			currentText = currentText.substring(0, currentText.length() - 1);
+			if(currentText.equals("0")) {
+				clearScreen();
+				return;
+			}
+			display.setText(currentText);
 		}
 
 		public void switchPolarity() {
