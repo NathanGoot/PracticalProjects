@@ -202,8 +202,16 @@ public class Calculator {
 			boolean isNegative = displayText.contains("-");
 			displayText = displayText.replace("-", "");
 
-			displayText = displayText.substring(0, displayText.length() - 1);
-			if (displayText.equals("0")) {
+			if (!displayText.startsWith("."))
+				displayText = displayText.substring(0, displayText.length() - 1);
+			else
+				displayText = displayText.substring(1);
+
+			if (displayText.endsWith(".")) {
+				System.out.println("Bezzzzzzzzzzzz1 " + displayText);
+				displayText = "." + displayText.replace(".", "");
+			}
+			if (displayText.equals("0") || displayText.equals("")) {
 				clearScreen();
 				return;
 			}
