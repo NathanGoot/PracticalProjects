@@ -190,5 +190,14 @@ public class Calculator {
 				break;
 			}
 		}
+
+		public double getNumber(String displayText) {
+			boolean isNegative = displayText.endsWith("-");
+			displayText = displayText.replace("-", "");
+			String reversed = "";
+			for (int i = displayText.length() - 1; i >= 0; i--)
+				reversed += displayText.charAt(i);
+			return Double.parseDouble(reversed) * (isNegative ? -1 : 1);
+		}
 	}
 }
