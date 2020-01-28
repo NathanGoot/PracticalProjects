@@ -132,6 +132,12 @@ public class Calculator {
 			case "C":
 				logic.clear();
 				break;
+			case "÷":
+			case "x":
+			case "-":
+			case "+":
+				logic.startCalculation(action);
+				break;
 			default:
 				System.err.println("action not recongized: " + action);
 				break;
@@ -140,6 +146,9 @@ public class Calculator {
 	}
 
 	private class Logic {
+		private String calculatingNumber = null;
+		private String calculationOperator = null;
+
 		public void switchPolarity() {
 			String currentNum = display.getText();
 			if (!currentNum.endsWith("-"))
@@ -150,6 +159,12 @@ public class Calculator {
 
 		public void clear() {
 			display.setText("0");
+		}
+
+		public void startCalculation(String calculationOperator) {
+			clear();
+			this.calculationOperator = calculationOperator;
+			calculatingNumber = display.getText();
 		}
 	}
 }
