@@ -191,8 +191,7 @@ public class Calculator {
 				number = number + operand;
 				break;
 			}
-			// TODO: set displayText as number
-
+			display.setText(getDisplayText(number));
 		}
 
 		public String getDisplayText(double number) {
