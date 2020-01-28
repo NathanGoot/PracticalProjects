@@ -153,9 +153,19 @@ public class Calculator {
 	private class Logic {
 		private String calculatingNumber = null;
 		private String calculationOperator = null;
-		
+		/**
+		 * Whether or not the user has pressed any number yet. Until they press any
+		 * number we display "0", but we want that zero to be replaced with a number
+		 * (instead of inserted next to it) on the first time.
+		 */
+		private boolean hasInteracted = false;
+
 		public void insertNumber(String number) {
-			display.setText(display.getText() + number);
+			if (!hasInteracted) {
+				hasInteracted = true;
+				display.setText(number);
+			} else
+				display.setText(display.getText() + number);
 			System.out.println("Inserted number: " + number);
 		}
 
@@ -176,6 +186,7 @@ public class Calculator {
 
 		public void clearScreen() {
 			display.setText("0");
+			hasInteracted = false;
 			System.out.println("Cleared screen.");
 		}
 
