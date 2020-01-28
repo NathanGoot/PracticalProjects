@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -53,7 +54,7 @@ public class Calculator {
 		display.setFont(DISPLAY_FONT);
 		mainPanel.add(display, BorderLayout.NORTH);
 
-		JPanel buttonPanel = new JPanel();
+		JPanel buttonPanel = new JPanel(new GridLayout(4, 3));
 		String buttonsAsString = "789456123_0.";
 		for (int i = 0; i < buttonsAsString.length(); i++) {
 			String button = buttonsAsString.substring(i, i + 1);
