@@ -167,13 +167,19 @@ public class Calculator {
 		private boolean hasInteracted = false;
 
 		public void insertNumber(String number) {
+			String displayText = display.getText();
+			// There's something funky with how the period gets added in insertPeriod() with
+			// RIGHT_TO_LEFT orientation. Need to move the period from the front to the back.
+			if (displayText.startsWith("."))
+				displayText = displayText.substring(1) + ".";
+
 			if (!hasInteracted) {
 				if (number.equals("0"))
 					return;
 				hasInteracted = true;
 				display.setText(number);
 			} else
-				display.setText(display.getText() + number);
+				display.setText(displayText + number);
 			System.out.println("Inserted number: " + number);
 		}
 
