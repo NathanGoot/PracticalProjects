@@ -162,6 +162,8 @@ public class Calculator {
 
 		public void insertNumber(String number) {
 			if (!hasInteracted) {
+				if (number.equals("0"))
+					return;
 				hasInteracted = true;
 				display.setText(number);
 			} else
