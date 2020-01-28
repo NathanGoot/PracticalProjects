@@ -175,20 +175,23 @@ public class Calculator {
 		public void endCalculation() {
 			if (calculatingNumber == null)
 				return;
+			double number = getNumber(calculatingNumber);
+			double operand = getNumber(display.getText());
 			switch (calculationOperator) {
 			case "÷":
-				// TODO: divide
+				number = number / operand;
 				break;
 			case "x":
-				// TODO: multiply
+				number = number * operand;
 				break;
 			case "-":
-				// TODO: subtract
+				number = number - operand;
 				break;
 			case "+":
-				// TODO: add
+				number = number + operand;
 				break;
 			}
+			// TODO: set displayText as number
 		}
 
 		public double getNumber(String displayText) {
