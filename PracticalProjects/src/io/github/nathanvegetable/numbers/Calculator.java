@@ -194,17 +194,20 @@ public class Calculator {
 		}
 
 		public void delete() {
-			String currentText = display.getText();
-			if (currentText.length() == 1) {
+			String displayText = display.getText();
+			if (displayText.length() == 1) {
 				clearScreen();
 				return;
 			}
-			currentText = currentText.substring(0, currentText.length() - 1);
-			if (currentText.equals("0")) {
+			boolean isNegative = displayText.contains("-");
+			displayText = displayText.replace("-", "");
+
+			displayText = displayText.substring(0, displayText.length() - 1);
+			if (displayText.equals("0")) {
 				clearScreen();
 				return;
 			}
-			display.setText(currentText);
+			display.setText(displayText + (isNegative ? "-" : ""));
 		}
 
 		public void switchPolarity() {
