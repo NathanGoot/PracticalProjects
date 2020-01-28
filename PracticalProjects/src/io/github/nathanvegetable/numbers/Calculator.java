@@ -169,7 +169,8 @@ public class Calculator {
 		public void insertNumber(String number) {
 			String displayText = display.getText();
 			// There's something funky with how the period gets added in insertPeriod() with
-			// RIGHT_TO_LEFT orientation. Need to move the period from the front to the back.
+			// RIGHT_TO_LEFT orientation. Need to move the period from the front to the
+			// back.
 			if (displayText.startsWith("."))
 				displayText = displayText.substring(1) + ".";
 
@@ -275,6 +276,11 @@ public class Calculator {
 		}
 
 		public double getNumber(String displayText) {
+			// Remove periods that don't have anything after them (like when just added to
+			// the front)
+			if (displayText.startsWith("."))
+				displayText = displayText.substring(1);
+			
 			boolean isNegative = displayText.endsWith("-");
 			return Double.parseDouble(reverseString(displayText.replace("-", ""))) * (isNegative ? -1 : 1);
 		}
