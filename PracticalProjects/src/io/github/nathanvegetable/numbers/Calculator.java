@@ -132,7 +132,7 @@ public class Calculator {
 				logic.switchPolarity();
 				break;
 			case "C":
-				logic.clear();
+				logic.clearAll();
 				break;
 			case "÷":
 			case "x":
@@ -164,17 +164,26 @@ public class Calculator {
 
 		}
 
-		public void clear() {
+		public void clearAll() {
+			clearScreen();
+			clearCalculations();
+		}
+
+		public void clearScreen() {
 			display.setText("0");
+			System.out.println("Cleared screen.");
+		}
+
+		public void clearCalculations() {
 			calculatingNumber = null;
 			calculationOperator = null;
-			System.out.println("Cleared screen and calculations.");
+			System.out.println("Cleared calculations.");
 		}
 
 		public void startCalculation(String calculationOperator) {
-			clear();
 			this.calculationOperator = calculationOperator;
 			calculatingNumber = display.getText();
+			clearScreen();
 			System.out.println(
 					"Starting calculation with number " + calculatingNumber + " and operator " + calculationOperator);
 		}
