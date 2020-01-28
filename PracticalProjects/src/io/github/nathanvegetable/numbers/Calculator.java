@@ -195,6 +195,13 @@ public class Calculator {
 
 		}
 
+		public String getDisplayText(double number) {
+			String stringRep = String.valueOf(number).replace("-", "");
+			if (number < 0)
+				stringRep = "-" + stringRep;
+			return reverseString(stringRep);
+		}
+
 		public double getNumber(String displayText) {
 			boolean isNegative = displayText.endsWith("-");
 			return Double.parseDouble(reverseString(displayText.replace("-", ""))) * (isNegative ? -1 : 1);
