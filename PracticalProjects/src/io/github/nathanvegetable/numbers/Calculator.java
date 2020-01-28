@@ -192,15 +192,19 @@ public class Calculator {
 				break;
 			}
 			// TODO: set displayText as number
+
 		}
 
 		public double getNumber(String displayText) {
 			boolean isNegative = displayText.endsWith("-");
-			displayText = displayText.replace("-", "");
+			return Double.parseDouble(reverseString(displayText.replace("-", ""))) * (isNegative ? -1 : 1);
+		}
+
+		private String reverseString(String input) {
 			String reversed = "";
-			for (int i = displayText.length() - 1; i >= 0; i--)
-				reversed += displayText.charAt(i);
-			return Double.parseDouble(reversed) * (isNegative ? -1 : 1);
+			for (int i = input.length() - 1; i >= 0; i--)
+				reversed += input.charAt(i);
+			return reversed;
 		}
 	}
 }
