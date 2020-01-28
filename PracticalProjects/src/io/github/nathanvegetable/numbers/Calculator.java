@@ -176,7 +176,7 @@ public class Calculator {
 			this.calculationOperator = calculationOperator;
 			calculatingNumber = display.getText();
 			System.out.println(
-					"Starting calculation with number " + calculatingNumber + "and operator " + calculationOperator);
+					"Starting calculation with number " + calculatingNumber + " and operator " + calculationOperator);
 		}
 
 		public void endCalculation() {
