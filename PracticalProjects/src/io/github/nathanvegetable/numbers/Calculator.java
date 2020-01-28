@@ -174,14 +174,17 @@ public class Calculator {
 			if (displayText.startsWith("."))
 				displayText = displayText.substring(1) + ".";
 
+			boolean isNegative = displayText.contains("-");
+			displayText = displayText.replace("-", "");
+
 			if (!hasInteracted) {
 				if (number.equals("0"))
 					return;
 				hasInteracted = true;
 				display.setText(number);
 			} else
-				display.setText(displayText + number);
-			System.out.println("Inserted number: " + number);
+				display.setText(displayText + number + (isNegative ? "-" : ""));
+			System.out.println("Inserted number: " + number + " onto " + displayText + ". New: " + display.getText());
 		}
 
 		public void insertPeriod() {
