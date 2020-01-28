@@ -232,10 +232,12 @@ public class Calculator {
 		}
 
 		public String getDisplayText(double number) {
-			String stringRep = String.valueOf(number).replace("-", "");
-			if (number < 0)
-				stringRep = "-" + stringRep;
-			return reverseString(stringRep);
+			if (Math.round(number) == number)
+				return "" + (int) number;
+			String stringRep = String.valueOf(number);
+			while (stringRep.endsWith("0"))
+				stringRep = stringRep.substring(0, stringRep.length() - 1);
+			return stringRep;
 		}
 
 		public double getNumber(String displayText) {
