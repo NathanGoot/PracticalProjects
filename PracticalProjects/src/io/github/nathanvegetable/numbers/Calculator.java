@@ -57,7 +57,7 @@ public class Calculator {
 		display.setFont(DISPLAY_FONT);
 		mainPanel.add(display, BorderLayout.NORTH);
 
-		JPanel numberButtonsPanel = new JPanel(new GridLayout(4, 3));
+		JPanel numberButtonsPanel = new JPanel(new GridLayout(4, 3, 5, 5));
 		String buttonsAsString = "789456123_0.";
 		for (int i = 0; i < buttonsAsString.length(); i++) {
 			String button = buttonsAsString.substring(i, i + 1);
@@ -68,7 +68,7 @@ public class Calculator {
 
 		mainPanel.add(numberButtonsPanel, BorderLayout.CENTER);
 
-		JPanel functionButtonsPanel = new JPanel(new GridLayout(0, 1));
+		JPanel functionButtonsPanel = new JPanel(new GridLayout(0, 1, 10, 10));
 		buttonsAsString = "<C÷x-+=";
 		for (int i = 0; i < buttonsAsString.length(); i++) {
 			String button = buttonsAsString.substring(i, i + 1);
