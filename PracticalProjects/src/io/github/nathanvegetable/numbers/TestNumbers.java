@@ -89,4 +89,20 @@ class TestNumbers {
 		assertEquals(1011, BinaryDecimalConverter.decimalToBinary(11));
 	}
 
+	@Test
+	void calculatorShouldDoMathCorrectly() {
+		Calculator calculator = new Calculator(false);
+		calculator.logic.insertNumber("50");
+		calculator.logic.startCalculation("-");
+		calculator.logic.insertNumber("40");
+		calculator.logic.endCalculation();
+		
+		calculator.logic.startCalculation("x");
+		calculator.logic.insertNumber("10");
+		calculator.logic.endCalculation();
+		
+		int calculation = (50 - 40) * 10;
+		assertEquals(calculation, Integer.parseInt(calculator.display.getText()));
+	}
+
 }
