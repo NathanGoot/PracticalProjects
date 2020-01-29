@@ -30,7 +30,7 @@ public class Calculator {
 	NumberListener numberListener = new NumberListener();
 	SpecialListener specialListener = new SpecialListener();
 
-	private Logic logic = new Logic();
+	public Logic logic = new Logic();
 	public boolean rightToLeftDisplay;
 
 	public static void main(String[] args) {
@@ -160,7 +160,7 @@ public class Calculator {
 		}
 	}
 
-	private class Logic {
+	class Logic {
 		private String calculatingNumber = null;
 		private String calculationOperator = null;
 		/**
