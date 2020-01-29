@@ -31,17 +31,20 @@ public class Calculator {
 	SpecialListener specialListener = new SpecialListener();
 
 	private Logic logic = new Logic();
+	public boolean rightToLeftDisplay;
 
 	public static void main(String[] args) {
-		Calculator calculator = new Calculator();
+		Calculator calculator = new Calculator(false);
 		calculator.display();
 	}
 
-	public Calculator() {
-		init();
+	public Calculator(boolean rightToLeftDisplay) {
+		init(rightToLeftDisplay);
 	}
 
-	public void init() {
+	public void init(boolean rightToLeftDisplay) {
+		this.rightToLeftDisplay = rightToLeftDisplay;
+
 		mainFrame = new JFrame("Calculator");
 		mainFrame.setPreferredSize(new Dimension(300, 500));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +56,8 @@ public class Calculator {
 
 		display = new JTextField("0", 12);
 		display.setEditable(false);
-		display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		if (rightToLeftDisplay)
+			display.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		display.setFont(DISPLAY_FONT);
 		mainPanel.add(display, BorderLayout.NORTH);
 
@@ -168,11 +172,13 @@ public class Calculator {
 
 		public void insertNumber(String number) {
 			String displayText = display.getText();
-			// There's something funky with how the period gets added in insertPeriod() with
-			// RIGHT_TO_LEFT orientation. Need to move the period from the front to the
-			// back.
-			if (displayText.startsWith("."))
-				displayText = displayText.substring(1) + ".";
+			if (rightToLeftDisplay) {
+				// There's something funky with how the period gets added in insertPeriod() with
+				// RIGHT_TO_LEFT orientation. Need to move the period from the front to the
+				// back.
+				if (displayText.startsWith("."))
+					displayText = displayText.substring(1) + ".";
+			}
 
 			boolean isNegative = displayText.contains("-");
 			displayText = displayText.replace("-", "");
@@ -182,15 +188,20 @@ public class Calculator {
 					return;
 				hasInteracted = true;
 				display.setText(number);
-			} else
+			} else if (rightToLeftDisplay)
 				display.setText(displayText + number + (isNegative ? "-" : ""));
+			else
+				display.setText((isNegative ? "-" : "") + displayText + number);
 			System.out.println("Inserted number: " + number + " onto " + displayText + ". New: " + display.getText());
 		}
 
 		public void insertPeriod() {
 			if (display.getText().contains("."))
 				return;
-			display.setText("." + display.getText());
+			if (rightToLeftDisplay)
+				display.setText("." + display.getText());
+			else
+				display.setText(display.getText() + ".");
 		}
 
 		public void delete() {
@@ -202,14 +213,16 @@ public class Calculator {
 			boolean isNegative = displayText.contains("-");
 			displayText = displayText.replace("-", "");
 
-			if (!displayText.startsWith("."))
+			if (!displayText.startsWith(".") || !rightToLeftDisplay)
 				displayText = displayText.substring(0, displayText.length() - 1);
 			else
 				displayText = displayText.substring(1);
 
 			if (displayText.endsWith(".")) {
-				System.out.println("Bezzzzzzzzzzzz1 " + displayText);
-				displayText = "." + displayText.replace(".", "");
+				if (rightToLeftDisplay)
+					displayText = "." + displayText.replace(".", "");
+				else
+					displayText = displayText.replace(".", "") + ".";
 			}
 			if (displayText.equals("0") || displayText.equals("")) {
 				clearScreen();
@@ -220,10 +233,15 @@ public class Calculator {
 
 		public void switchPolarity() {
 			String currentNum = display.getText();
-			if (!currentNum.endsWith("-"))
-				display.setText(currentNum + "-");
+			if (rightToLeftDisplay)
+				if (!currentNum.endsWith("-"))
+					display.setText(currentNum + "-");
+				else
+					display.setText(currentNum.split("-")[0]);
+			else if (!currentNum.endsWith("-"))
+				display.setText("-" + currentNum);
 			else
-				display.setText(currentNum.split("-")[0]);
+				display.setText(currentNum.split("-")[1]);
 			System.out.println("Switched polarity of number to " + display.getText());
 		}
 
@@ -287,7 +305,7 @@ public class Calculator {
 			while (stringRep.endsWith("0"))
 				stringRep = stringRep.substring(0, stringRep.length() - 1);
 
-			if (stringRep.startsWith("-"))
+			if (stringRep.startsWith("-") && rightToLeftDisplay)
 				stringRep = stringRep.substring(1) + "-";
 			return stringRep;
 		}
@@ -309,8 +327,10 @@ public class Calculator {
 		public double getNumber(String displayText) {
 			// Remove periods that don't have anything after them (like when just added to
 			// the front)
-			if (displayText.startsWith("."))
+			if (rightToLeftDisplay && displayText.startsWith("."))
 				displayText = displayText.substring(1);
+			else if (!rightToLeftDisplay && displayText.endsWith("."))
+				displayText = displayText.substring(0, displayText.length() - 1);
 
 			boolean isNegative = displayText.endsWith("-") || displayText.startsWith("-");
 			return Double.parseDouble(displayText.replace("-", "")) * (isNegative ? -1 : 1);
