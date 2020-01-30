@@ -17,7 +17,7 @@ public class UnitConverter {
 
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
-		String[] unitOptions = new String[] { "Mass", "Currency" };
+		String[] unitOptions = new String[] { "Currency", "Mass" };
 
 		System.out.println("Select a starting unit type:");
 		for (int i = 0; i < unitOptions.length; i++)
@@ -31,10 +31,10 @@ public class UnitConverter {
 		for (int i = 0; i < selections.length; i++) {
 			switch (selections[i]) {
 			case 1:
-				unitsToSelectFrom[i] = Mass.values();
+				unitsToSelectFrom[i] = Currency.values();
 				break;
 			case 2:
-				unitsToSelectFrom[i] = Currency.values();
+				unitsToSelectFrom[i] = Mass.values();
 				break;
 			default:
 				System.err.println("Could not find selection.");
