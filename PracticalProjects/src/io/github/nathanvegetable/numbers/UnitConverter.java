@@ -56,7 +56,7 @@ public class UnitConverter {
 			System.out.println((i + 1) + ": " + unitsToSelectFrom[0][i]);
 		int startUnitIdx = inputScanner.nextInt();
 		Unit startUnit = unitsToSelectFrom[0][startUnitIdx - 1];
-		
+
 		System.out.println("Select your starting value of " + startUnit + ":");
 		double startingValue = inputScanner.nextDouble();
 
@@ -66,11 +66,14 @@ public class UnitConverter {
 		int endUnitIdx = inputScanner.nextInt();
 		Unit endUnit = unitsToSelectFrom[1][endUnitIdx - 1];
 
-
-		double value = startingValue * startUnit.valueOfUnitToDollars() / endUnit.valueOfUnitToDollars();
+		double value = getValueOfAlternateUnit(startingValue, startUnit, endUnit);
 		System.out.println(startingValue + " " + startUnit + " is equal to " + value + " " + endUnit);
 
 		inputScanner.close();
+	}
+
+	public static double getValueOfAlternateUnit(double inputValue, Unit inputUnit, Unit outputUnit) {
+		return inputValue * inputUnit.valueOfUnitToDollars() / outputUnit.valueOfUnitToDollars();
 	}
 
 	public static enum Currency implements Unit {
