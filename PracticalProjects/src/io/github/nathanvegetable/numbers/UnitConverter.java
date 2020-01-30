@@ -81,7 +81,7 @@ public class UnitConverter {
 
 		@Override
 		public double valueOfOneDollar() {
-			return value * (1 / 50.73);
+			return value * 50.73;
 		}
 
 	}
