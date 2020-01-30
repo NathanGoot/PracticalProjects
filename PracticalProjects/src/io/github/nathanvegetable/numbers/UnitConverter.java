@@ -18,7 +18,7 @@ public class UnitConverter {
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
 		String[] unitOptions = new String[] { Currency.class.getSimpleName(), Mass.class.getSimpleName(),
-				Length.class.getSimpleName() };
+				Length.class.getSimpleName(), Speed.class.getSimpleName() };
 
 		System.out.println("Select a starting unit type:");
 		for (int i = 0; i < unitOptions.length; i++)
@@ -39,6 +39,9 @@ public class UnitConverter {
 				break;
 			case 3:
 				unitsToSelectFrom[i] = Length.values();
+				break;
+			case 4:
+				unitsToSelectFrom[i] = Speed.values();
 				break;
 			default:
 				System.err.println("Could not find selection.");
@@ -105,7 +108,6 @@ public class UnitConverter {
 	/**
 	 * In honor of the long-gone $5 footlong at Subway, we compare 1 foot to 5
 	 * dollars.
-	 *
 	 */
 	public static enum Length implements Unit {
 		INCH(1 / 12), FOOT(1), YARD(3), MILE(5280), MILLIMETER(0.00328084), CENTIMETER(0.0328084), DECIMETER(
@@ -119,6 +121,28 @@ public class UnitConverter {
 		@Override
 		public double valueOfUnitToDollars() {
 			return value * 5;
+		}
+	}
+
+	/**
+	 * Per <a
+	 * href=https://cleantechnica.com/2018/07/15/tesla-range-plotted-relative-to-speed-temperature-graphs/>CleanTechnica</a>
+	 * the consumed power of a Model S temp <32F at 60mph is 20kW. The average
+	 * electricy cost in the US as of September 2018 is <a
+	 * href="https://www.electricchoice.com/electricity-prices-by-state/"13.19
+	 * cents</a>. The cost of 60mph therefore is 263.80, leaving 1mph at 4.397.
+	 */
+	public static enum Speed implements Unit {
+		MILES_PER_HOUR(1), KILOMETERS_PER_HOUR(1.60934);
+		double value;
+
+		Speed(double value) {
+			this.value = value;
+		}
+
+		@Override
+		public double valueOfUnitToDollars() {
+			return value * 4.397;
 		}
 	}
 
