@@ -17,7 +17,8 @@ public class UnitConverter {
 
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
-		String[] unitOptions = new String[] { Currency.class.getName(), Mass.class.getName(), Length.class.getName() };
+		String[] unitOptions = new String[] { Currency.class.getSimpleName(), Mass.class.getSimpleName(),
+				Length.class.getSimpleName() };
 
 		System.out.println("Select a starting unit type:");
 		for (int i = 0; i < unitOptions.length; i++)
