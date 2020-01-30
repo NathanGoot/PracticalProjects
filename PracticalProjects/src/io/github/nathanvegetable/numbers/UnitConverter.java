@@ -17,6 +17,28 @@ public class UnitConverter {
 
 	}
 
+	/**
+	 * Per
+	 * <a href="https://goldprice.org/gold-price-per-gram.html">GoldPrice.org</a> as
+	 * of 10:46PM 01/29/2020, gold is worth $50.73 per gram.<br/>
+	 * When comparing money to weight, we compare weight in gold.
+	 */
+	public static enum Mass implements Unit {
+		MILLIGRAM(0.001), CENTIGRAM(0.01), DECIGRAM(0.1), GRAM(1), DEKAGRAM(10), HECTOGRAM(100), KILOGRAM(
+				1000), METRIC_TON(1000000), OUNCE(28.3495), POUND(453.592), TON(907185);
+		double value;
+
+		Mass(double value) {
+			this.value = value;
+		}
+
+		@Override
+		public double multiplicationToReachOnePenny() {
+			return 50.73;
+		}
+
+	}
+
 	public static enum Currency implements Unit {
 		PENNY(1), NICKEL(5), DIME(10), QUARTER(25), HALF_DOLLAR(50), DOLLAR(100), TEN_DOLLAR_BILL(
 				1000), TWENTY_DOLLAR_BILL(2000), FIFTY_DOLLAR_BILL(5000), HUNDRED_DOLLAR_BILL(10000);
