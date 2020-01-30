@@ -10,7 +10,7 @@ import java.util.Scanner;
  * 
  * @author NathanVegetable
  * 
- *         I have decided to use one penny as the base value (1).
+ *         I have decided to use one dollar as the base value (1).
  *
  */
 public class UnitConverter {
