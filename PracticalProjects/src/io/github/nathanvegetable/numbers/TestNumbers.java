@@ -96,13 +96,25 @@ class TestNumbers {
 		calculator.logic.startCalculation("-");
 		calculator.logic.insertNumber("40");
 		calculator.logic.endCalculation();
-		
+
 		calculator.logic.startCalculation("x");
 		calculator.logic.insertNumber("10");
 		calculator.logic.endCalculation();
-		
+
 		int calculation = (50 - 40) * 10;
 		assertEquals(calculation, Integer.parseInt(calculator.display.getText()));
+	}
+
+	@Test
+	void dollarConvertedToNickelsShouldBe20() {
+		assertEquals(20,
+				UnitConverter.getValueOfAlternateUnit(1, UnitConverter.Currency.DOLLAR, UnitConverter.Currency.NICKEL));
+	}
+
+	@Test
+	void oneMileShouldBe5280Feet() {
+		assertEquals(5280,
+				UnitConverter.getValueOfAlternateUnit(1, UnitConverter.Length.MILE, UnitConverter.Length.FOOT));
 	}
 
 }
