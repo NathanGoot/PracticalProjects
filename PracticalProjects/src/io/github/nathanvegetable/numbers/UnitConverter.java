@@ -1,5 +1,7 @@
 package io.github.nathanvegetable.numbers;
 
+import java.util.Scanner;
+
 /**
  * Project: Unit Converter (temp, currency, volume, mass and more) - Converts
  * various units between one another. The user enters the type of unit being
@@ -14,7 +16,52 @@ package io.github.nathanvegetable.numbers;
 public class UnitConverter {
 
 	public static void main(String[] args) {
+		Scanner inputScanner = new Scanner(System.in);
+		String[] unitOptions = new String[] { "Mass", "Currency" };
 
+		System.out.println("Select a starting unit type:");
+		for (int i = 0; i < unitOptions.length; i++)
+			System.out.println((i + 1) + ": " + unitOptions[i]);
+
+		int start = inputScanner.nextInt();
+		System.out.println("Select an ending unit type:");
+		int end = inputScanner.nextInt();
+		int[] selections = new int[] { start, end };
+		Unit[][] unitsToSelectFrom = new Unit[][] { {}, {} };
+		for (int i = 0; i < selections.length; i++) {
+			switch (selections[i]) {
+			case 1:
+				unitsToSelectFrom[i] = Mass.values();
+				break;
+			case 2:
+				unitsToSelectFrom[i] = Currency.values();
+				break;
+			default:
+				System.err.println("Could not find selection.");
+				return;
+			}
+		}
+		System.out.println("Select a starting unit:");
+		for (int i = 0; i < unitsToSelectFrom[0].length; i++)
+			System.out.println((i + 1) + ": " + unitsToSelectFrom[0][i]);
+		int startUnitIdx = inputScanner.nextInt();
+		Unit startUnit = unitsToSelectFrom[0][startUnitIdx - 1];
+
+		System.out.println("Select an ending unit:");
+		for (int i = 0; i < unitsToSelectFrom[1].length; i++)
+			System.out.println((i + 1) + ": " + unitsToSelectFrom[1][i]);
+		int endUnitIdx = inputScanner.nextInt();
+		Unit endUnit = unitsToSelectFrom[1][endUnitIdx - 1];
+
+		System.out.println("Select your starting value of " + startUnit + ":");
+		double startingValue = inputScanner.nextDouble();
+
+		// TODO: correct below formula
+		double value = startingValue * startUnit.multiplicationToReachOneDollar()
+				/ endUnit.multiplicationToReachOneDollar();
+		System.out.println(startingValue + " " + startUnit + " converted to " + endUnit + " = " + value);
+
+		inputScanner.close();
 	}
 
 	/**
