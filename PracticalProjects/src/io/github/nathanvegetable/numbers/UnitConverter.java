@@ -56,6 +56,9 @@ public class UnitConverter {
 			System.out.println((i + 1) + ": " + unitsToSelectFrom[0][i]);
 		int startUnitIdx = inputScanner.nextInt();
 		Unit startUnit = unitsToSelectFrom[0][startUnitIdx - 1];
+		
+		System.out.println("Select your starting value of " + startUnit + ":");
+		double startingValue = inputScanner.nextDouble();
 
 		System.out.println("Select an ending unit:");
 		for (int i = 0; i < unitsToSelectFrom[1].length; i++)
@@ -63,8 +66,6 @@ public class UnitConverter {
 		int endUnitIdx = inputScanner.nextInt();
 		Unit endUnit = unitsToSelectFrom[1][endUnitIdx - 1];
 
-		System.out.println("Select your starting value of " + startUnit + ":");
-		double startingValue = inputScanner.nextDouble();
 
 		double value = startingValue * startUnit.valueOfUnitToDollars() / endUnit.valueOfUnitToDollars();
 		System.out.println(startingValue + " " + startUnit + " is equal to " + value + " " + endUnit);
