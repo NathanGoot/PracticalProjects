@@ -33,23 +33,23 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double multiplicationToReachOnePenny() {
+		public double multiplicationToReachOneDollar() {
 			return 50.73;
 		}
 
 	}
 
 	public static enum Currency implements Unit {
-		PENNY(1), NICKEL(5), DIME(10), QUARTER(25), HALF_DOLLAR(50), DOLLAR(100), TEN_DOLLAR_BILL(
-				1000), TWENTY_DOLLAR_BILL(2000), FIFTY_DOLLAR_BILL(5000), HUNDRED_DOLLAR_BILL(10000);
-		long value;
+		PENNY(0.01), NICKEL(0.05), DIME(0.1), QUARTER(0.25), HALF_DOLLAR(0.50), DOLLAR(1), TEN_DOLLAR_BILL(
+				10), TWENTY_DOLLAR_BILL(20), FIFTY_DOLLAR_BILL(50), HUNDRED_DOLLAR_BILL(100);
+		double value;
 
-		Currency(long value) {
+		Currency(double value) {
 			this.value = value;
 		}
 
 		@Override
-		public double multiplicationToReachOnePenny() {
+		public double multiplicationToReachOneDollar() {
 			return 1;
 		}
 	}
@@ -57,10 +57,10 @@ public class UnitConverter {
 	public abstract interface Unit {
 		/**
 		 * Each Unit class can have it's own values, for example Mass could have 1 pound
-		 * as value 1. If 1 pound is valued at $1.00, then this should return 100.<br/>
+		 * as value 1. If 1 pound is valued at $1.00, then this should return 1.<br/>
 		 * Using this, inter-unit conversions can occur with the same base-level
-		 * comparison to a penny.
+		 * comparison to a dollar.
 		 */
-		public double multiplicationToReachOnePenny();
+		public double multiplicationToReachOneDollar();
 	}
 }
