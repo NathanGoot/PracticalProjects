@@ -57,7 +57,7 @@ public class UnitConverter {
 		double startingValue = inputScanner.nextDouble();
 
 		double value = startingValue * startUnit.valueOfOneDollar() / endUnit.valueOfOneDollar();
-		System.out.println(startingValue + " " + startUnit + " converted to " + endUnit + " = " + value);
+		System.out.println(startingValue + " " + startUnit + " is equal to " + value + " " + endUnit);
 
 		inputScanner.close();
 	}
