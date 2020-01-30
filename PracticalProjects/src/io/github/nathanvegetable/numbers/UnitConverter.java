@@ -17,7 +17,7 @@ public class UnitConverter {
 
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
-		String[] unitOptions = new String[] { Currency.class.getName(), Mass.class.getName() };
+		String[] unitOptions = new String[] { Currency.class.getName(), Mass.class.getName(), Length.class.getName() };
 
 		System.out.println("Select a starting unit type:");
 		for (int i = 0; i < unitOptions.length; i++)
@@ -35,6 +35,9 @@ public class UnitConverter {
 				break;
 			case 2:
 				unitsToSelectFrom[i] = Mass.values();
+				break;
+			case 3:
+				unitsToSelectFrom[i] = Length.values();
 				break;
 			default:
 				System.err.println("Could not find selection.");
@@ -96,7 +99,26 @@ public class UnitConverter {
 		public double valueOfOneDollar() {
 			return value * 50.73;
 		}
+	}
 
+	/**
+	 * In honor of the long-gone $5 footlong at Subway, we compare 1 foot to 5
+	 * dollars.
+	 *
+	 */
+	public static enum Length implements Unit {
+		INCH(1 / 12), FOOT(1), YARD(3), MILE(5280), MILLIMETER(0.00328084), CENTIMETER(0.0328084), DECIMETER(
+				0.328084), METER(3.28084), KILOMETER(3280.84);
+		double value;
+
+		Length(double value) {
+			this.value = value;
+		}
+
+		@Override
+		public double valueOfOneDollar() {
+			return value / 5;
+		}
 	}
 
 	public abstract interface Unit {
