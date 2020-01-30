@@ -62,6 +62,21 @@ public class UnitConverter {
 		inputScanner.close();
 	}
 
+	public static enum Currency implements Unit {
+		PENNY(0.01), NICKEL(0.05), DIME(0.1), QUARTER(0.25), HALF_DOLLAR(0.50), DOLLAR(1), TEN_DOLLAR_BILL(
+				10), TWENTY_DOLLAR_BILL(20), FIFTY_DOLLAR_BILL(50), HUNDRED_DOLLAR_BILL(100);
+		double value;
+
+		Currency(double value) {
+			this.value = value;
+		}
+
+		@Override
+		public double valueOfOneDollar() {
+			return value;
+		}
+	}
+
 	/**
 	 * Per
 	 * <a href="https://goldprice.org/gold-price-per-gram.html">GoldPrice.org</a> as
@@ -82,21 +97,6 @@ public class UnitConverter {
 			return value * 50.73;
 		}
 
-	}
-
-	public static enum Currency implements Unit {
-		PENNY(0.01), NICKEL(0.05), DIME(0.1), QUARTER(0.25), HALF_DOLLAR(0.50), DOLLAR(1), TEN_DOLLAR_BILL(
-				10), TWENTY_DOLLAR_BILL(20), FIFTY_DOLLAR_BILL(50), HUNDRED_DOLLAR_BILL(100);
-		double value;
-
-		Currency(double value) {
-			this.value = value;
-		}
-
-		@Override
-		public double valueOfOneDollar() {
-			return value;
-		}
 	}
 
 	public abstract interface Unit {
