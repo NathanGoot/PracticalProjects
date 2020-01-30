@@ -60,7 +60,7 @@ public class UnitConverter {
 		System.out.println("Select your starting value of " + startUnit + ":");
 		double startingValue = inputScanner.nextDouble();
 
-		double value = startingValue * startUnit.valueOfOneDollar() / endUnit.valueOfOneDollar();
+		double value = startingValue * startUnit.valueOfUnitToDollars() / endUnit.valueOfUnitToDollars();
 		System.out.println(startingValue + " " + startUnit + " is equal to " + value + " " + endUnit);
 
 		inputScanner.close();
@@ -76,7 +76,7 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double valueOfOneDollar() {
+		public double valueOfUnitToDollars() {
 			return value;
 		}
 	}
@@ -97,7 +97,7 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double valueOfOneDollar() {
+		public double valueOfUnitToDollars() {
 			return value * 50.73;
 		}
 	}
@@ -117,7 +117,7 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double valueOfOneDollar() {
+		public double valueOfUnitToDollars() {
 			return value * 5;
 		}
 	}
@@ -129,6 +129,6 @@ public class UnitConverter {
 		 * Using this, inter-unit conversions can occur with the same base-level
 		 * comparison to a dollar.
 		 */
-		public double valueOfOneDollar();
+		public double valueOfUnitToDollars();
 	}
 }
