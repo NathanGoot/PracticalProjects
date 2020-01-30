@@ -25,5 +25,20 @@ public class UnitConverter {
 		Currency(long value) {
 			this.value = value;
 		}
+
+		@Override
+		public double multiplicationToReachOnePenny() {
+			return 1;
+		}
+	}
+
+	public abstract interface Unit {
+		/**
+		 * Each Unit class can have it's own values, for example Mass could have 1 pound
+		 * as value 1. If 1 pound is valued at $1.00, then this should return 100.<br/>
+		 * Using this, inter-unit conversions can occur with the same base-level
+		 * comparison to a penny.
+		 */
+		public double multiplicationToReachOnePenny();
 	}
 }
