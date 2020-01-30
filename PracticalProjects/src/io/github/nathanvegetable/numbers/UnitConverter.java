@@ -80,8 +80,8 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double multiplicationToReachOneDollar() {
-			return 1 / 50.73;
+		public double valueOfOneDollar() {
+			return value * (1 / 50.73);
 		}
 
 	}
@@ -96,8 +96,8 @@ public class UnitConverter {
 		}
 
 		@Override
-		public double multiplicationToReachOneDollar() {
-			return 1;
+		public double valueOfOneDollar() {
+			return value;
 		}
 	}
 
@@ -108,6 +108,6 @@ public class UnitConverter {
 		 * Using this, inter-unit conversions can occur with the same base-level
 		 * comparison to a dollar.
 		 */
-		public double multiplicationToReachOneDollar();
+		public double valueOfOneDollar();
 	}
 }
