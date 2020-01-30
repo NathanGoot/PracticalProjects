@@ -34,7 +34,7 @@ public class UnitConverter {
 
 		@Override
 		public double multiplicationToReachOneDollar() {
-			return 50.73;
+			return 1 / 50.73;
 		}
 
 	}
