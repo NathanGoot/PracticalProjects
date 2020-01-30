@@ -18,7 +18,7 @@ public class UnitConverter {
 	public static void main(String[] args) {
 		Scanner inputScanner = new Scanner(System.in);
 		String[] unitOptions = new String[] { Currency.class.getSimpleName(), Mass.class.getSimpleName(),
-				Length.class.getSimpleName(), Speed.class.getSimpleName() };
+				Length.class.getSimpleName(), Speed.class.getSimpleName(), Time.class.getSimpleName() };
 
 		System.out.println("Select a starting unit type:");
 		for (int i = 0; i < unitOptions.length; i++)
@@ -42,6 +42,9 @@ public class UnitConverter {
 				break;
 			case 4:
 				unitsToSelectFrom[i] = Speed.values();
+				break;
+			case 5:
+				unitsToSelectFrom[i] = Time.values();
 				break;
 			default:
 				System.err.println("Could not find selection.");
@@ -143,6 +146,25 @@ public class UnitConverter {
 		@Override
 		public double valueOfUnitToDollars() {
 			return value * 4.397;
+		}
+	}
+
+	/**
+	 * Per <a href=
+	 * "https://tradingeconomics.com/united-states/wages">TradingEconomics.com</a>
+	 * the average US hourly wage as of December 2019 is $23.79.
+	 */
+	public static enum Time implements Unit {
+		SECOND(1 / 60 / 60), MINUTE(1 / 60), HOUR(1), DAY(24), WEEK(24 * 7), MONTH(24 * 365.25 / 12), YEAR(24 * 365.25);
+		double value;
+
+		Time(double value) {
+			this.value = value;
+		}
+
+		@Override
+		public double valueOfUnitToDollars() {
+			return value * 23.79;
 		}
 	}
 
