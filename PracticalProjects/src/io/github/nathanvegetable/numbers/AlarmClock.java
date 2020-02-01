@@ -5,6 +5,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -22,6 +26,7 @@ public class AlarmClock {
 	JFrame mainFrame = null;
 	JLabel[] numberDisplays = new JLabel[4];
 	final static Font DISPLAY_FONT = new Font("serif", Font.PLAIN, 60);
+	Timer timer = null;
 
 	public static void main(String[] args) {
 		AlarmClock alarmClock = new AlarmClock();
@@ -48,9 +53,11 @@ public class AlarmClock {
 			numberDisplays[i].setVerticalAlignment(JLabel.CENTER);
 			numberDisplays[i].setFont(DISPLAY_FONT);
 			numberDisplays[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			
+
 			numberPanel.add(numberDisplays[i]);
 		}
+		timer = new Timer();
+		timer.schedule(new TimeKeeper(), 0, 100);
 
 		mainFrame.pack();
 		// Set to center of screen
@@ -59,5 +66,15 @@ public class AlarmClock {
 
 	public void display() {
 		mainFrame.setVisible(true);
+	}
+
+	private class TimeKeeper extends TimerTask {
+		SimpleDateFormat HHmm = new SimpleDateFormat("HHmm");
+
+		public void run() {
+			String currentTime = HHmm.format(new Date());
+			for (int i = 0; i < currentTime.length(); i++)
+				numberDisplays[i].setText("" + currentTime.charAt(i));
+		}
 	}
 }
