@@ -69,10 +69,10 @@ public class AlarmClock {
 	}
 
 	private class TimeKeeper extends TimerTask {
-		SimpleDateFormat HHmm = new SimpleDateFormat("HHmmss");
+		SimpleDateFormat HHmmss = new SimpleDateFormat("HHmmss");
 
 		public void run() {
-			String currentTime = HHmm.format(new Date());
+			String currentTime = HHmmss.format(new Date());
 			for (int i = 0; i < currentTime.length(); i++)
 				numberDisplays[i].setText("" + currentTime.charAt(i));
 		}
