@@ -24,7 +24,7 @@ import javax.swing.JLabel;
  */
 public class AlarmClock {
 	JFrame mainFrame = null;
-	JLabel[] numberDisplays = new JLabel[4];
+	JLabel[] numberDisplays = new JLabel[6];
 	final static Font DISPLAY_FONT = new Font("serif", Font.PLAIN, 60);
 	Timer timer = null;
 
@@ -39,13 +39,13 @@ public class AlarmClock {
 
 	public void init() {
 		mainFrame = new JFrame("Calculator");
-		mainFrame.setPreferredSize(new Dimension(500, 120));
+		mainFrame.setPreferredSize(new Dimension(750, 120));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel mainPanel = new JPanel(new BorderLayout(5, 5));
 		mainFrame.add(mainPanel);
 
-		JPanel numberPanel = new JPanel(new GridLayout(1, 4, 5, 5));
+		JPanel numberPanel = new JPanel(new GridLayout(1, 6, 5, 5));
 		mainPanel.add(numberPanel, BorderLayout.NORTH);
 		for (int i = 0; i < numberDisplays.length; i++) {
 			numberDisplays[i] = new JLabel("0");
@@ -69,7 +69,7 @@ public class AlarmClock {
 	}
 
 	private class TimeKeeper extends TimerTask {
-		SimpleDateFormat HHmm = new SimpleDateFormat("HHmm");
+		SimpleDateFormat HHmm = new SimpleDateFormat("HHmmss");
 
 		public void run() {
 			String currentTime = HHmm.format(new Date());
