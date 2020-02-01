@@ -38,7 +38,7 @@ public class AlarmClock {
 	}
 
 	public void init() {
-		mainFrame = new JFrame("Calculator");
+		mainFrame = new JFrame("Alarm Clock");
 		mainFrame.setPreferredSize(new Dimension(750, 120));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
