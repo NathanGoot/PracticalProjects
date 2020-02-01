@@ -1,7 +1,6 @@
 package io.github.nathanvegetable.numbers;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,10 +9,9 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  * Project: Alarm Clock - A simple clock where it plays a sound after X number
@@ -39,7 +37,7 @@ public class AlarmClock {
 
 	public void init() {
 		mainFrame = new JFrame("Alarm Clock");
-		mainFrame.setPreferredSize(new Dimension(750, 120));
+		mainFrame.setPreferredSize(new Dimension(300, 120));
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel mainPanel = new JPanel(new BorderLayout(5, 5));
@@ -47,12 +45,15 @@ public class AlarmClock {
 
 		JPanel numberPanel = new JPanel(new GridLayout(1, 6, 5, 5));
 		mainPanel.add(numberPanel, BorderLayout.NORTH);
+		boolean leftNumber = true;
 		for (int i = 0; i < numberDisplays.length; i++) {
 			numberDisplays[i] = new JLabel("0");
-			numberDisplays[i].setHorizontalAlignment(JLabel.CENTER);
+			
+			numberDisplays[i].setHorizontalAlignment(leftNumber ? JLabel.RIGHT : JLabel.LEFT);
+			leftNumber = !leftNumber;
+			
 			numberDisplays[i].setVerticalAlignment(JLabel.CENTER);
 			numberDisplays[i].setFont(DISPLAY_FONT);
-			numberDisplays[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 			numberPanel.add(numberDisplays[i]);
 		}
