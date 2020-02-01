@@ -57,7 +57,7 @@ public class AlarmClock {
 			numberPanel.add(numberDisplays[i]);
 		}
 		timer = new Timer();
-		timer.schedule(new TimeKeeper(), 0, 100);
+		timer.schedule(new TimeKeeper(), 0, TimeKeeper.REPEAT_INTERVAL);
 
 		mainFrame.pack();
 		// Set to center of screen
@@ -69,6 +69,7 @@ public class AlarmClock {
 	}
 
 	private class TimeKeeper extends TimerTask {
+		static final int REPEAT_INTERVAL = 100;
 		SimpleDateFormat HHmmss = new SimpleDateFormat("HHmmss");
 
 		public void run() {
